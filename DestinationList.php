@@ -43,7 +43,13 @@ if (($result = curl_exec($ch)) === FALSE) {
 die('cURL error: '.curl_error($ch)."<br />\n");
 } else {
 echo "Success!<br />\n";
-print_r($result);
+    $response = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $result);
+    $xml = new SimpleXMLElement($response);
+
+    $body = $xml->xpath('//sBody');
+    $array = json_decode(json_encode((array)$body), TRUE);
+
+    print_r($array);
 }
 curl_close($ch);
 

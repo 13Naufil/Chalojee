@@ -39,6 +39,10 @@ xmlns:hot="http://TekTravel/HotelBookingApi">
       <hot:GuestNationality>$GuestNationality</hot:GuestNationality>
       <hot:RoomGuests>
         <hot:RoomGuest AdultCount="$RoomGuests[AdultCount]" ChildCount="$RoomGuests[ChildCount]">
+            <hot:ChildAge>
+             <hot:int>5</hot:int>
+             <hot:int>13</hot:int>
+            </hot:ChildAge>
         </hot:RoomGuest>
       </hot:RoomGuests>
       <hot:ResultCount>$ResultCount</hot:ResultCount>
