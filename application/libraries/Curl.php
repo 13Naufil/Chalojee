@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Curl {
 
-	public function cURL($url,$mySOAP,$action,$headers){
+
+	public function request($url,$mySOAP,$headers){
 		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);

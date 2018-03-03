@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once (APPPATH.'/libraries/Curl.php');
+
 class Booking extends Curl {
 
 	public $username;
@@ -48,7 +50,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -65,7 +67,7 @@ EOD;
 		$w3_addressing = W3_ADDRESSING;
 		$action = WSDL_ACTION."/HotelBook";
 
-		$mySOAP = <<<EOD
+        $soap = <<<EOD
 <soap:Envelope xmlns:soap="$soap_envolope" xmlns:hot="$xmlns">
   <soap:Header xmlns:wsa="$w3_addressing">
     <hot:Credentials UserName="$username" Password="$password"> </hot:Credentials>
@@ -124,7 +126,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -165,7 +167,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -203,7 +205,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -243,7 +245,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 

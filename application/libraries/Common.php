@@ -1,13 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once (APPPATH.'/libraries/Curl.php');
+
+
 class Common extends Curl {
 
 	public $username;
 	public $password;
 
-	
-	public function CountryList()
+    public function CountryList()
 	{
 		
 		$username = $this->username;
@@ -38,12 +40,12 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
 
-	public function DestinationCityList($CountryCode,$ReturnNewCityCodes)
+	public function DestinationCityList($CountryCode,$ReturnNewCityCodes = true)
 	{
 		
 		$username = $this->username;
@@ -78,7 +80,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -114,7 +116,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -151,7 +153,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -187,7 +189,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
@@ -226,7 +228,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 }

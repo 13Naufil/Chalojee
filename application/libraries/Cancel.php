@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once (APPPATH.'/libraries/Curl.php');
+
 class Cancel extends Curl {
 
 	public $username;
@@ -43,7 +45,7 @@ EOD;
 		'SOAPAction: ' .$action
 		);
 
-	return $this->cURL($url,$soap,$action,$headers);
+	return $this->request($url,$soap,$headers);
 
 	}
 
