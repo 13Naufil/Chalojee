@@ -45,7 +45,7 @@ EOD;
 	}
 
 
-	public function DestinationCityList($CountryCode,$ReturnNewCityCodes = true)
+	public function DestinationCityList($CountryCode,$ReturnNewCityCodes = "true")
 	{
 		
 		$username = $this->username;
@@ -193,7 +193,7 @@ EOD;
 
 	}
 
-	public function GiataHotelCodeList($CityCode,$IsDetailedResponse = true)
+	public function GiataHotelCodeList($CityCode,$IsDetailedResponse)
 	{
 		
 		$username = $this->username;
@@ -203,7 +203,7 @@ EOD;
 		$xmlns = WSDL_ACTION;
 		$soap_envolope = SOAP_ENV;
 		$w3_addressing = W3_ADDRESSING;
-		$action = WSDL_ACTION."/GiataHotelCodeList";
+		$action = WSDL_ACTION."/GiataHotelCodes";
 
 		$soap = <<<EOD
 <?xml version="1.0" encoding="utf-8" ?>
@@ -214,10 +214,10 @@ EOD;
     <wsa:To>$url</wsa:To>
   </soap:Header>
   <soap:Body>
-    <hot:DestinationCityListRequest>
+    <hot:GiataHotelCodesRequest>
       <hot:CityCode>$CityCode</hot:CityCode>
       <hot:IsDetailedResponse>$IsDetailedResponse</hot:IsDetailedResponse>
-    </hot:DestinationCityListRequest>
+    </hot:GiataHotelCodesRequest>
   </soap:Body>
 </soap:Envelope>
 EOD;

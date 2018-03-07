@@ -16,9 +16,9 @@ class Welcome extends CI_Controller {
 
 		
 
-		//$city = $this->common->DestinationCityList('AE');
+		//$data = $this->common->DestinationCityList('AE');
 
-        $data = $this->common->GiataHotelCodeList('25906');
+        $data = $this->common->GiataHotelCodeList('25906',"true");
         print_r($data);
 		exit;
 		//$this->load->view('welcome_message');
