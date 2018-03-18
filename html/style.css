@@ -29,6 +29,7 @@ body {
     height: 100%;
     background-image: url("images/bg.jpg");
     background-size: cover;
+    background-position: top 70px center;
 }
 body {
     color: #fff;
@@ -77,8 +78,7 @@ header .top_header ul li i, header .top_header ul li span {
 /* Menu Nav */
 
 #header{
-    background-color: black;
-    opacity: 0.5;
+    background-color: #2a71be;
 }
 
 #myNavbar{
