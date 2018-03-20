@@ -29,7 +29,6 @@ body {
     height: 100%;
     background-image: url("images/bg.jpg");
     background-size: cover;
-    background-position: top 70px center;
 }
 body {
     color: #fff;
@@ -43,10 +42,18 @@ a {
     letter-spacing: .03em;
 }
 
+h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 710;
+}
+
 section{
-    background-color: black;
-    opacity: 0.75;
+    padding-top: 70px;
     height: 100%;
+}
+#main{
+     background: rgba(0, 0, 0, 0.5);
 }
 
 .space{
@@ -78,7 +85,7 @@ header .top_header ul li i, header .top_header ul li span {
 /* Menu Nav */
 
 #header{
-    background-color: #2a71be;
+        background: rgba(0, 0, 0, 0.75);
 }
 
 #myNavbar{
@@ -105,3 +112,33 @@ header .top_header ul li i, header .top_header ul li span {
         border-radius: 0px;
     }
 }
+
+
+
+/* Search bar */
+
+.search{
+    padding-top: 100px;
+    padding-bottom: 150px;
+}
+
+.search-panel{
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    line-height: 20px;
+    height: 60px;
+}
+
+.search-label{
+color: red;
+font-weight: 500;}
+
+
+.btn-search a img{
+    height: 194px;
+    margin-top: -89px;
+    margin-left: 60px;
+}
+
+    
