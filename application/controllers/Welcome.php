@@ -12,15 +12,50 @@ class Welcome extends CI_Controller {
 	}
 
 	public function index()
-	{
+    {
+        $data = $this->DestinationCities();
 
-		
+        print_r($data); exit;
 
-		//$data = $this->common->DestinationCityList('AE');
-
-        $data = $this->common->GiataHotelCodeList('25906',"true");
-        print_r($data);
-		exit;
-		//$this->load->view('welcome_message');
 	}
+
+
+	public function DestinationCities(){
+        $countries = $this->common->CountryList()[0];
+
+
+        if(!empty($countries['CountryListResponse']))
+        {
+            $arr = array();
+            $arr2 = array();
+            if($countries['CountryListResponse']['Status']['StatusCode'] == 1){
+                foreach ($countries['CountryListResponse']['CountryList']['Country'] as $key => $data)
+                {
+                    $cityList = $this->common->DestinationCityList($data['@attributes']['CountryCode'])[0];
+
+                    if(!empty($cityList['DestinationCityListResponse'])){
+                        if($cityList['DestinationCityListResponse']['Status']['StatusCode'] == 1) {
+                            foreach ($cityList['DestinationCityListResponse']['CityList']['City'] as $key2 => $cities){
+                                $arr[] = array('CityCode'=>$cities['@attributes']['CityCode'],'CityName'=>$cities['@attributes']['CityName']." , ".$cityList['DestinationCityListResponse']['CountryName']);
+                            }
+                        }
+                    }
+                    //print_r($arr);
+                    //$arr2[] = array('array'=>$arr);
+
+                }
+                //print_r($arr2);
+                //return $arr;
+               //print_r($arr2);
+
+            }
+        }
+    //exit;
+      //  return $arr;
+    }
+
+
+
+
+
 }
