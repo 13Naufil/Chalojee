@@ -1,0 +1,145 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+    color: #fff;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    background-color: #fff;
+    border: .05rem solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+    height: 100%;
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+}
+body {
+    color: #000;
+    text-align: center;
+    text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    letter-spacing: .03em;
+}
+
+.white-color{
+    color:white;
+}
+
+h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 710;
+}
+
+section{
+    padding-top: 70px;
+    height: 100%;
+}
+#main{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.space{
+    padding-left: 5px;
+}
+
+header .top_header {
+    background: url(../images/top-header2.jpg) no-repeat center;
+    height: 50px;
+}
+
+header .top_header ul {
+    margin: 0;
+}
+
+header .top_header ul li {
+    display: inline-block;
+    padding-left: 16px;
+    line-height: 50px;
+    font-size: 12px;
+}
+
+header .top_header ul li i, header .top_header ul li span {
+    color: #ffffff;
+}
+
+
+
+/* Menu Nav */
+
+#header{
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#myNavbar{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+#header .navbar-brand img{
+    height: 80px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    /*border: 1px solid white;*/
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+@media (min-width: 768px){
+    #header .navbar {
+        border-radius: 0px;
+    }
+}
+
+/* Search bar */
+
+.search {
+    padding-top: 70px;
+    padding-bottom: 250px;
+}
+
+.search-panel{
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    line-height: 20px;
+    height: 60px;
+}
+
+.search-label{
+    color: red;
+    font-weight: 500;}
+
+
+.btn-search a img{
+    height: 194px;
+    margin-top: -89px;
+    margin-left: 1px;
+}
+

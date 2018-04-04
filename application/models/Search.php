@@ -54,5 +54,16 @@ Class Search extends CI_Model {
         }
     }
 
+    public function fetchbyStr($str,$limit)
+    {
+        $sql = "SELECT CityCode,CityName FROM c_designation WHERE CityName LIKE '%$str%' LIMIT ".$limit;
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
 }
 ?>

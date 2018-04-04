@@ -6,7 +6,7 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		
-		//$this->load->library("common");
+		$this->load->library("common");
 		$this->load->model("search");
 		$this->common->username = WSDL_USERNAME;
 		$this->common->password = WSDL_PASSWORD;
@@ -15,9 +15,9 @@ class Welcome extends CI_Controller {
 	public function index()
     {
         //$this->search->add(array('abc'=>123,'cde'=>33));
-       $data = $this->DestinationCities();
+       //$data = $this->DestinationCities();
 
-      print_r($data); exit;
+      echo "123"; exit;
 
 	}
 
@@ -47,7 +47,7 @@ class Welcome extends CI_Controller {
                     }
 
                 }
-                return $arr;
+                echo json_encode($arr);
             }
         }
     }
