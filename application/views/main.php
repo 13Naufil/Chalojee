@@ -9,13 +9,14 @@
 
 <section>
     <div class="container">
-        <div class="content">
+        <div class="content text-center">
             <h1 class="white-color">When your journey begins</h1>
             <p class="white-color">Discover your next great adventure, become an explorer to get started!</p>
         </div>
         <div class="search">
-
-            <div class="row search-panel">
+            <?php $attributes = array('id' => 'searchId'); ?>
+            <?php echo form_open_multipart('main/search', $attributes);  ?>
+            <div class="row search-panel text-center">
 
 
                 <div class="col col-lg-4">
@@ -23,7 +24,7 @@
                         <label class="search-label">Destination</label>
                     </div>
                     <div class="row">
-                        <input class="form-control" type="text" id="search" name="search">
+                        <input class="form-control" type="text" id="search" name="search" required>
                         <div id="suggesstion-box"></div>
                     </div>
 
@@ -34,10 +35,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <div class='input-group date' id="datetimepicker1">
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                            <div id="datetimepicker11">
+                                <input type='text' class="form-control datepicker" name="check_in" required/>
+                                <!--<span class="input-group-addon">-->
+                        <!--<span class="glyphicon glyphicon-calendar"></span>-->
                     </span>
                             </div>
                         </div>
@@ -49,10 +50,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <div class='input-group date'  id="datetimepicker2">
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                            <div id="datetimepicker21">
+                                <input type='text' class="form-control datepicker" name="check_out" required/>
+                                <!--<span class="input-group-addon">-->
+                        <!--<span class="glyphicon glyphicon-calendar"></span>-->
                     </span>
                             </div>
                         </div>
@@ -63,11 +64,10 @@
                         <label class="search-label">Rooms</label>
                     </div>
                     <div class="row">
-                        <select class="form-control" id="Adult">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <select class="form-control" id="Adult" name="rooms">
+                            <?php for($i=1;$i<=10;$i++):?>
+                            <option><?php echo $i; ?></option>
+                            <?php endfor; ?>
                         </select>
                     </div>
                 </div>
@@ -76,11 +76,10 @@
                         <label class="search-label">Adult</label>
                     </div>
                     <div class="row">
-                        <select class="form-control" id="Adult">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <select class="form-control" id="Adult" name="adult">
+                            <?php for($i=1;$i<=10;$i++):?>
+                                <option><?php echo $i; ?></option>
+                            <?php endfor; ?>
                         </select>
                     </div>
                 </div>
@@ -89,21 +88,26 @@
                         <label class="search-label">Child</label>
                     </div>
                     <div class="row">
-                        <select class="form-control" id="Child">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <select class="form-control" id="Child" name="child">
+                            <?php for($i=0;$i<=10;$i++):?>
+                                <option><?php echo $i; ?></option>
+                            <?php endfor; ?>
                         </select>
                     </div>
                 </div>
                 <div class="col col-lg-1 btn-search">
                     <div class="row">
-                        <a href="#"><img src="<?php echo base_url(); ?>images/search.png" /></a>
+                        <button class="btn-search-img" type="submit"><img src="<?php echo base_url(); ?>images/search.png" /></button>
                     </div>
                 </div>
             </div>
-
+            <div class="col col-lg-12" id="child-age">
+                <div class="row text-center">
+                    <h4 class="white-color">Child Age</h4>
+                </div>
+                <div class="row" id="child-age-context"></div>
+            </div>
+            <?php echo form_close();?>
         </div>
     </div>
 </section>
@@ -117,7 +121,7 @@
         source : function(request, response){
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>index.php/Main/HotelSearch",
+            url: "<?php echo base_url(); ?>Main/HotelSearch",
             data:{str: $('#search').val(),limit:5},
             beforeSend: function(){
                 $("#search").css("background","#FFF url(<?php echo base_url(); ?>images/LoaderIcon.gif) no-repeat 165px");
@@ -135,12 +139,41 @@
     }
     });
 
+        $('.datepicker').datepicker({
+            format: 'YYYY-MM-DD'
+        });
+
     } );
+
+
+    $('#Child').on('change',function(){
+        var child = this.value;
+        var data = [];
+        for(var a = 1; a <= child; a++)
+        {
+            data.push(selectChildAge());
+            //data[] = selectChildAge();
+            console.log(a);
+
+        }
+        $('#child-age-context').html(data);
+    });
 
     function selectCountry(value) {
         //console.log(value);
         $("#search").val(value);
         $("#suggesstion-box").hide();
+    }
+
+    function removeSelectChildAge()
+    {
+        $('#child-age-context').empty();
+    }
+
+    function selectChildAge(value)
+    {
+        removeSelectChildAge();
+        return "<div class='col col-lg-2'><div class='child-age'><select name='child_age[]' class='form-control'><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div>";
     }
 </script>
 

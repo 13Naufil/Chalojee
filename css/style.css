@@ -1,47 +1,1771 @@
-/*
- * Globals
- */
+@font-face {
+    font-family: myfont;
+    src: url('../fonts/CenturyGothic.TTF');
+}
+body {
+    background-color: #000;
+    font-family: myfont;
+    line-height: 1;
+    color: #fff;
+    font-weight: bold;
+}
+a,button {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: 0 0;
+    outline: 0 !important;
+    transition: all 0.5s ease-in-out;
+}
 
-/* Links */
-a,
-a:focus,
-a:hover {
+a:focus, a:hover, a:active {
+    outline: 0;
+    box-shadow: 0;
+    text-decoration: none;
+}
+select {
+    -moz-appearance: window;
+    -webkit-appearance: none;}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+    font-weight: bold;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black;font-weight: bold;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: black;font-weight: bold;
+}
+
+/*====== Custom Styles ========*/
+.home{background: url("../images/bg.jpg") no-repeat;}
+.home-bg{background: url("../img/bg.jpg") no-repeat;}
+.inner-bg{background: url("../img/inner-bg.jpg") no-repeat;}
+.main-menu .navbar-default {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.main-menu .navbar-default ul li a {
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff !important;
+    background-color: transparent !important;
+    position: relative;
+    padding: 20px 35px;
+    position: relative;
+}
+
+.main-menu .navbar-default ul li a:after{
+    position: absolute;
+    right: 10px;
+    top: 24px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat -480px -242px;
+    width: 9px;
+    height: 14px;
+}
+
+
+.main-menu .navbar-default ul li a:before{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat 0px 0px;
+    width: 29px;
+    height: 18px;
+}
+
+.main-menu .navbar-default ul li+li a:before{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat 0px -35px;
+    width: 25px;
+    height: 19px;
+}
+
+.main-menu .navbar-default ul li+li+li a:before{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat -1px -74px;
+    width: 18px;
+    height: 21px;
+}
+
+.main-menu .navbar-default ul li+li+li+li a:before{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat -1px -115px;
+    width: 23px;
+    height: 21px;
+}
+
+.main-menu .navbar-default ul li+li+li+li+li a:before{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat 0 -151px;
+    width: 29px;
+    height: 21px;
+}
+.main-menu .navbar-default ul li+li+li+li+li+li a:before{
+    position: absolute;
+    left: 0;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat -2px -193px;
+    width: 23px;
+    height: 22px;
+}
+
+.main-menu .navbar-default ul li.login-btn a {
+    background-color: #fff !important;
+    width: 120px;
+    height: 32px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0;
+    color: #03316c !important;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 13px;
+    margin-left: 30px;
+    font-size: 16px;
+    border-top: none;
+    position: relative;
+}
+.main-menu .navbar-default ul li.login-btn a:after{background: none !important}
+
+
+.main-menu .navbar-default ul li.login-btn a:before{
+    position: absolute;
+    left: -19px;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat -481px -6px;
+    width: 19px;
+    height: 9px;
+
+
+}
+.main-menu .navbar-default ul li.login-btn a:hover{
+    background-color: #ffffff !important;
+    color: rgb(6, 207, 159) !important;
+
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    border-color: transparent;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    border-color: #fff;
+}
+#wrap {
+    margin-top: 18px;
+    position: relative;
+    float: left;
+    padding: 0;
+}
+.pad-both{padding-left: 0 !important; padding-right: 0 !important}
+.pad-left{padding-left: 0 !important;}
+.pad-right{padding-right: 0 !important;}
+
+.flt-right{float: right;}
+.flt-left{float: left;}
+
+.top-header {
+    background: #0682df;
+    padding: 15px 0;
+    border-bottom:1px solid #0157b1;
+}
+
+
+
+
+.lang select {
+    background: transparent;
+    border: 0;
+    width: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    background: url('../img/select-arrow.png') no-repeat  right center;
     color: #fff;
 }
 
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-    color: #333;
-    text-shadow: none; /* Prevent inheritance from `body` */
-    background-color: #fff;
-    border: .05rem solid #fff;
-}
-
-
-/*
- * Base structure
- */
-
-html,
-body {
-    height: 100%;
-    background-image: url("../images/bg.jpg");
-    background-size: cover;
-}
-body {
+.lang select option
+{
     color: #000;
+}
+
+
+.lang {
     text-align: center;
-    text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
-    overflow: hidden;
+    padding: 5px;
 }
 
-a {
-    text-decoration: none;
-    letter-spacing: .03em;
+.up-text {
+    text-align: right;
 }
 
+.up-text p {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 15px;
+}
+
+.up-text span {
+    display: inline-block;
+    background: #ff0036;
+    padding: 5px 16px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.up-text span:before
+{
+    background: url('../img/sprite.png') no-repeat -491px -47px;
+    width: 8px;
+    height: 6px;
+    position: absolute;
+    bottom: -6px;
+    left: 10px;
+    content: "";
+}
+
+.up-text button {
+    border: 0;
+    background: #045999;
+    padding: 6px 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.recharge {
+    text-align: right;
+    padding: 70px 0 0 0;
+}
+
+.recharge p {
+    display: inline-block;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 15px 0 0;
+}
+
+.recharge button {
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    background: #045999;
+    color:  #fff;
+    border-radius: 0;
+}
+
+.recharge button:hover {
+    color:  #fff;
+    border-radius: 0;
+}
+.home-contact {
+    margin: 0;
+    padding: 22px 0px 0 30px;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    text-align:  right;
+    width: 190px;
+    float: right;
+}
+
+.home-contact:before
+{
+    background: url('../img/sprite.png') no-repeat -286px -4px;
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    left: 55px;
+    top: 20px;
+    content: "";
+}
+
+.links {
+    background: #0682df;
+    width: 100%;
+    float:  left;
+    padding: 10px 5px;
+    border: 1px solid #969696;
+}
+
+.inner-header-links ul {
+    padding: 0;
+    margin: 0;
+}
+
+.inner-header-links ul li {
+    margin: 0 31px 0 0;
+    background: #fff;
+    float:  left;
+    list-style: none;
+    font-size: 16px;
+    width: 165px;
+    padding: 15px 0;
+    text-align: center;
+    color: #03316c;
+    font-weight: 700;
+    position: relative;
+}
+.inner-header-links ul li:after
+{
+    background: url('../img/upper-list-circle.png');
+    width: 55px;
+    height: 19px;
+    position: absolute;
+    content: "";
+    right: -43px;
+    top: 15px;
+}
+
+.inner-header-links ul .last:after
+{
+    background: none !important;
+}
+
+.count p {
+    margin: 0 5px 0 0;
+    display: inline-block;
+    background: #fff;
+    color: #03316c;
+    padding: 5px 8px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.count span {
+    margin: 0 5px 0 0;
+    display: inline-block;
+    background: #03316c;
+    color: #fff;
+    padding: 5px 8px;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 50%;
+    font-family: sans-serif;
+}
+
+.count a{
+    background: url('../img/sprite.png') no-repeat -288px -67px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.count {
+    padding: 13px 0;
+}
+
+.count label {font-size: 16px;font-weight: 500;display: inline-block;}
+
+/* Customize the label (the container) */
+.home-radio {
+    display: block;
+    position: relative;
+    padding-top: 5px;
+    padding-left: 30px;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.home-radio input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    background: #fff !important;
+    height: 16px;
+    border-radius: 50%;
+    width: 16px;
+    border: 1px solid #8c8a8a;
+}
+
+/* On mouse-over, add a grey background color */
+.home-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.home-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.home-radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.home-radio .checkmark:after {
+    top: 3px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #0682df;
+}
+.filter {
+    background: #d4e1e9;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    float: left;
+    margin: 30px 0 0 0;
+}
+
+.filter h1 {
+    background: #0a72c6;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.filter input {
+    width: 90%;
+    padding: 10px 30px;
+    margin: 0 0 10px 0;
+    border: 0;
+    color:  #000;
+    font-weight: 700;
+}
+
+.filter select {
+    width: 90%;
+    padding: 10px 30px;
+    margin: 0 0 10px 0;
+    border: 0;
+    color: #000;
+    font-weight: 700;
+}
+
+.filter button {
+    border: 0;
+    float: right;
+    background: #03316c;
+    margin: 10px 20px 10px 0;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.loc-inpt {
+    background: url('../img/sprite.png') no-repeat -375px -109px #fff;
+}
+.date-inpt {
+    background: url('../img/sprite.png') no-repeat -267px -197px #fff;
+}
+.rooms-inpt {
+    background: url('../img/sprite.png') no-repeat -265px -164px #fff;
+}
+.fltr-srch{width: 100%; float: left; position: relative;}
+.fltr-srch:before{
+    background: url('../img/sprite.png') no-repeat -2px -281px;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    content: "";
+}
+.adult-inpt {
+    background: url('../img/sprite.png') no-repeat -474px -268px #fff;
+}
+.start-inpt {
+    background: url('../img/sprite.png') no-repeat -264px -228px #fff;
+}
+
+.all-filter {
+    background: #f1efef;
+    border-radius: 5px;
+    width: 100%;
+    float: left;
+    margin: 15px 0 0 0;
+}
+
+.all-filter h1 {
+    background: #0a72c6;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    float: left;
+    text-align: left;
+    width: 50%;
+    padding: 10px 0 11px 10px;
+    border-radius: 5px 0px 0 0;
+}
+
+.all-filter a {
+    background: #0a72c6;
+    font-size: 12px;
+    font-weight: 700;
+    float: left;
+    color:  #fff;
+    display: inline-block;
+    margin: 0 0 20px 0;
+    text-align: right;
+    width: 50%;
+    padding: 11px;
+    border-radius: 0px 5px 0 0;
+}
+.txt-filter {
+    width: 100%;
+    float:  left;
+    background: #cfdcde;
+    margin: 10px 0 0 0;
+    padding: 3px;
+    text-align: center;
+}
+
+.txt-filter input {
+    width: 90%;
+    padding: 8px;
+    color:  #000;
+}
+
+.all-filter h2 {
+    width: 50%;
+    float:  left;
+    margin: 0;
+    color:  #000;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 15px 0 0 15px;
+}
+
+a.iner-filter-link {
+    background: transparent;
+    color:  #000;
+    padding: 17px 15px 0 0px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.star-rating {
+    width:  100%;
+    float:  left;
+    padding: 5px 0 5px 30px;
+    background: #d4efe9;
+    margin: 10px 0 0 0;
+}
+
+.star-rating i {
+    color: #fc9400;
+}
+.star-rating span{color: #000; font-size: 12px;}
+
+
+/* Customize the label (the container) */
+.chck-cont {
+    display: block;
+    position: relative;
+    /* padding-left: 35px; */
+    /* margin-bottom: 12px; */
+    margin: 0;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.chck-cont input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.chck-cont .checkmark {
+    position: absolute;
+    top: 2px;
+    left: -15px;
+    border-radius: 0;
+    height: 10px;
+    width: 10px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.chck-cont:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.chck-cont input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.chck-cont input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.chck-cont .checkmark:after {
+    left: 3px;
+    top: 2px;
+    width: 5px;
+    height: 7px;
+    border: solid #0a72c6;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.star-rating-inner {
+    width: 100%;
+    float:  left;
+    margin: 0 0 3px 0;
+}
+
+.unrated p {
+    width: 25px;
+    height: 15px;
+    margin: 0;
+    float: left;
+    background: url(../img/sprite.png) no-repeat -151px -2px;
+}
+.ratin-box {
+    float:  left;
+}
+
+.ratin-box img {
+    float: left;
+    margin: 2px 1px;
+}
+.unrated {
+    width: 100%;
+    float:  left;
+}
+.home-text {
+    width: 100%;
+    float:  left;
+    background: #f1efef;
+    margin: 30px 0 0 0;
+    color:  #ff0010;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px;
+}
+
+.home-text p {
+    margin: 0;
+    line-height: 16px;
+}
+.hotels-filter {
+    width: 100%;
+    float: left;
+    background: #f1efef;
+    margin: 5px 0 0 0;
+    padding: 10px 0;
+}
+
+.hotels-filter p {
+    color:  #000;
+    font-weight: 700;
+    font-size: 13px;
+    margin: 0;
+    padding: 7px 10px 0 0;
+    float: left;
+}
+
+.hotels-filter ul {
+    padding: 0;
+    margin: 4px 0 0 0;
+    float: left;
+}
+
+.hotels-filter ul li {
+    list-style:  none;
+    float:  left;
+}
+
+.hotels-filter ul li a {
+    color: #000;
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: underline;
+    float: left;
+    padding: 3px;
+    background: transparent;
+}
+.home-serach input {
+    background: url('../img/sprite.png') no-repeat -187px -282px #03316c;
+    border: 0;
+    color:  #fff;
+    padding: 5px 0px 5px 30px;
+    width: 55%;
+    float:  left;font-weight: bold;
+}
+.home-serach input::-webkit-input-placeholder {
+    color: white !important;
+}
+
+.home-serach input:-moz-placeholder { /* Firefox 18- */
+    color: white !important;
+}
+
+.home-serach input::-moz-placeholder {  /* Firefox 19+ */
+    color: white !important;
+}
+
+.home-serach input:-ms-input-placeholder {
+    color: white !important;
+}
+
+.home-map a {
+    background: #d1caca;
+    font-weight: bold;
+    color: #03316c;
+    float:  left;
+    font-size: 12px;
+    display: block;
+    position: relative;
+    padding: 8px 10px 7px 30px;
+}
+.home-map a:before
+{
+    background: url('../img/sprite.png') no-repeat -381px -117px;
+    width: 15px;
+    height: 18px;
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    content: "";
+}
+.home-content {
+    width: 100%;
+    float:  left;
+    background: #d0dce3e8;
+    margin: 5px 0 0 0;
+}
+
+.pormotion-inner {
+    width: 100%;
+    float:  left;
+}
+
+.home-pormotion {
+    width: 100%;
+    float:  left;
+    background: #f1efef;
+}
+
+.pormotion-inner p{
+    color:  #000;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 20px 15px 0 0;
+    float:  left;
+}
+
+.pormotion-inner ul {/
+padding:;
+    padding: 0;
+    margin: 0;
+}
+
+.pormotion-inner ul li {
+    float:  left;
+    position: relative;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none;
+    border-left: 1px solid #d1caca;
+}
+
+.pormotion-inner ul li a {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none;
+    float: left;
+    padding: 20px 13px 20px 35px;
+}
+
+
+.por-price:before{
+    background: url('../img/sprite.png')  no-repeat -382px -4px;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    left: 9px;
+    top: 14px;
+    content: "";
+}
+.por-star:before{
+    background: url('../img/sprite.png')  no-repeat -381px -69px;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    left: 13px;
+    top: 20px;
+    content: "";
+}
+.por-offer:before{
+    background: url('../img/sprite.png')  no-repeat -479px -91px;
+    width: 16px;
+    height: 15px;
+    position: absolute;
+    left: 12px;
+    top: 17px;
+    content: "";
+}
+.pormotion-inner ul .last {
+    padding: 20px 13px 20px 15px;
+}
+.pormotion-links a {
+    background: #03316c;
+    padding: 20px 20px 14px 20px;
+    margin: 6px 5px 0 0;
+    float: left;
+    position: relative;
+    color: #fff;
+}
+
+.pormotion-links a:before
+{
+    background: url('../img/sprite.png') no-repeat -476px -208px;
+    width: 19px;
+    height: 15px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    content: "";
+}
+
+a.clr-all-filter {
+    padding: 11px 7px 12px 35px;
+    margin: 6px 0 0 0;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+a.clr-all-filter:before
+{
+    background: url('../img/sprite.png') no-repeat -469px -151px;
+    width: 26px;
+    height: 13px;
+    position: absolute;
+    left: 6px;
+    top: 11px;
+    content: "";
+}
+
+.pagination-box {
+    width: 100%;
+    float:  left;
+    background: #ff8d00;
+    padding: 5px 0;
+    margin: 5px 0 0 0;
+}
+
+.pagination-left {
+    width: 36%;
+    float: right;
+}
+
+a.prev-arrow01 {
+    background: url('../img/sprite.png') no-repeat -3px -337px;
+    padding: 11px;
+    display: inline-block;
+}
+
+.pagination-info {
+    float: left;
+    margin: 0 10px 0 10px;
+    padding: 8px 15px;
+    width: 160px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+.pagination-info p {
+    display: inline-block;
+    margin: 0;
+    color:  #000;
+    font-weight:  bold;
+    font-size: 12px;
+}
+
+.pagination-info input {
+    width: 30%;
+    border: 0;
+    margin: 0 10px;
+    padding: 5px;
+}
+.pag-arrow-pre {
+    float: left;
+    padding: 18px 0 0 0;
+}
+.pag-arrow {
+    float: left;
+    padding: 18px 0 0 0;
+}
+
+a.next-arrow01 {
+    background: url('../img/sprite.png') no-repeat -482px -328px;
+    padding: 11px;
+    display: inline-block;
+}
+.pagination-right select {
+    border: 0;
+    border-radius: 0 5px 0 0;
+    margin: 8px 0 0 0;
+    color:  #000;
+    padding: 7px 50px 7px 10px;
+    background: url('../img/sprite.png')  no-repeat -411px -361px #fff;
+}
+.pagination-right {
+    text-align: center;
+    width: 15%;
+    float:  right;
+}
+.content-details {
+    width: 100%;
+    margin: 5px 0 0 0;
+    float:  left;
+    border: 2px solid #b4bec3;
+}
+
+.inner-content-details h1 {
+    margin: 6px 0 0 0;
+    font-size: 16px;
+    color: #03316c;
+    font-weight: bold;
+    float:  left;
+}
+
+a.content-map {
+    color:  #000;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 0 0 20px;
+    display: inline-block;
+    position: relative;
+}
+a.content-map:before
+{
+    background: url('../img/sprite.png')  no-repeat -156px -155px;
+    width: 10px;
+    height: 13px;
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    content: "";
+}
+
+.content-star {
+    width: 100%;
+    float:  left;
+    margin: 3px 0 0 0;
+}
+
+.content-star i {
+    color: #ff8d00;
+}
+
+.content-star img {
+    margin: 0 0 0 1px;
+}
+
+.inner-content-details h3 {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0 5px 0;
+    float:  left;
+    width: 100%;
+}
+
+.inner-content-details p {
+    color: #000;
+    font-size: 11px;
+    font-weight: bold;
+    float: left;
+    width: 100%;
+}
+
+.inner-content-details p a {
+    text-decoration: underline;
+    color:  #000;
+    font-weight: bold;
+}
+
+a.content-payment {
+    background: #30b727;
+    font-size: 12px;
+    color:  #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 6px 10px 6px 30px;
+    display: inline-block;
+    margin: 10px 0 0 0;
+    position: relative;
+}
+
+a.content-payment:before
+{
+    background: url('../img/sprite.png') no-repeat -288px -371px;
+    width: 15px;
+    height: 6px;
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    content: "";
+}
+
+.loc-pic {
+    margin: 6px 0 15px 5px;
+}
+button {}
+
+.booking-div {
+    width: 100%;
+    float:  left;
+    text-align: right;
+    b animation:;
+    background: #dae6e2;
+    border: 2px solid #c9d4d2;
+    padding: 5px 0;
+    margin: 0 0 5px 0;
+}
+
+.booking-div button {
+    border: 0;
+    background: #03316c;
+    padding: 9px 15px;
+    margin: 0 20px 0 0;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.booking-div img {
+    margin: -8px 15px 0 0;
+}
+
+
+
+p.price {
+    margin: 0;
+    color:  #000;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin: 6px 0;
+}
+
+p.min-price {
+    margin: 0;
+    color:  #000;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: right;
+    margin: 0px 0 6px 0;
+}
+
+p.tax {
+    margin: 0;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: right;
+    margin: 0px 0 6px 0;
+}
+
+.email-cont {
+    margin: 0;
+    color: #000;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: right;
+}
+.price-icon
+{
+    background: url('../img/sprite.png') no-repeat -22px -351px;
+    height: 24px;
+}
+
+.cont-face
+{
+    background: url('../img/sprite.png') no-repeat -2px -381px;
+    width: 19px;
+    height: 11px;
+    display: inline-block;
+}
+
+
+p.gift-price {
+    margin: 0;
+    color:  #000;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin: 6px 0;
+    position: relative;
+}
+
+.gift-price:before
+{
+    background: url('../img/sprite.png') no-repeat -148px -99px;
+    width: 17px;
+    height: 15px;
+    position: absolute;
+    left: 4px;
+    top: 0;
+    content: "";
+}
+.inner-content-details h2 {
+    background: #0a72c6;
+    font-size: 12px;
+    padding: 5px 8px;
+    display: inline-block;
+    float:  left;
+    margin: 5px 0 0 0;
+    border-radius: 3px;
+}
+
+.price-icon-pic {
+    text-align: right;
+}
+p.price img {
+    margin: -4px 0px 0 0;
+}
+
+
+/* Customize the label (the container) */
+.email-cont {
+    display: block;
+    position: relative;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    padding-top: 10px;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 70px;
+    float:  right;
+}
+
+/* Hide the browser's default radio button */
+.email-cont input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom radio button */
+.email-cont .checkmark {
+    position: absolute;
+    top: 8px;
+    right: 50px;
+    background: #e5e4e4 !important;
+    height: 15px;
+    border: 1px solid #aaaaaa;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+/* On mouse-over, add a grey background color */
+.home-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.email-cont input:checked ~ .checkmark {
+    background: #2196F3 !important;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.email-cont .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.email-cont input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.email-cont .checkmark:after {
+    top: -1px;
+    left: -1px;
+    width: 15px;
+    height: 15px;
+    background: #f26522;
+    border-radius: 2px;
+}
+
+
+.filter-box {
+    width: 100%;
+    float:  left;
+    background: #d4efe9;
+    margin: 6px 0 0 0;
+    position: relative;
+    padding: 10px 20px 42px 20px;
+}
+
+
+
+.filter-box input {
+    border: 0;
+    color: #000;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+}
+
+.main-menu .navbar-default ul li.inner-btn a {
+    background: #ff8d00 !important;
+    width: 120px;
+    height: 32px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0;
+    color: #fff !important;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 13px;
+    margin-left: 30px;
+    font-size: 16px;
+    border-top: none;
+    position: relative;
+}
+.main-menu .navbar-default ul li.inner-btn a:after{background: none !important}
+
+
+.main-menu .navbar-default ul li.inner-btn a:before{
+    position: absolute;
+    left: -19px;
+    top: 20px;
+    content: "";
+    background: url('../img/sprite.png') no-repeat -481px -26px;
+    width: 19px;
+    height: 9px;
+
+
+}
+.main-menu .navbar-default ul li.login-btn a:hover{
+    background-color: #ffffff !important;
+    color: rgb(6, 207, 159) !important;
+
+}
+
+
+.hotel-details-inner {
+    width: 100%;
+    float:  left;
+    background: #fff;
+    padding: 8px;
+    margin: 10px 0;
+}
+
+.hotel-details-inner h1 {
+    color:  #03316c;
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.hotel-details-inner p {
+    color:  #000;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 6px 0 0 0;
+    float: left;
+}
+
+.inner-loc {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 8px 0 0 0;
+    padding: 0 0 0 16px;
+    float:  left;
+    width: 100%;
+    position: relative;
+}
+
+.inner-loc:before
+{
+    background: url('../img/sprite.png') no-repeat -486px -123px;
+    width: 11px;
+    height: 14px;
+    position: absolute;
+    left: 1px;
+    top: -3px;
+    content: "";
+}
+
+
+
+.inner-content-star {
+    float: left;
+    margin: 3px 0 0 5px;
+}
+
+.inner-content-star i {
+    color: #ff8d00;
+}
+
+.inner-content-star img {
+    margin: 0 0 0 1px;
+}
+
+.inner-hotel-links {
+    width: 100%;
+    float:  left;
+}
+
+.inner-hotel-links ul {
+    padding: 0;
+    margin: 0;
+}
+
+.inner-hotel-links ul li {
+    list-style:  none;
+    float:  left;
+}
+
+.inner-hotel-links ul li a {
+    background: #ff8d00;
+    color:  #fff;
+    padding: 11px 12px 8px 12px;
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0px 10px 0 0;
+    display:  inline-block;
+}
+
+.inner-hotel-links ul li img {
+    margin: -3px 5px 0 0;
+}
+
+.image-gallery{
+    width: 100%;
+    float:  left;
+    background: #fff;
+    margin: 10px 0 0 0;
+    position: relative;
+}
+.image-gallery:before
+{
+    background: url('../img/sprite.png') no-repeat -89px -357px;
+    width: 26px;
+    height: 20px;
+    position: absolute;
+    content: "";
+    top: 10px;
+    left: 9px;
+}
+.image-gallery select {
+    color: #000;
+    font-weight: bold;
+    width: 100%;
+    background: url('../img/sprite.png') no-repeat 1131px -392px #fff;
+    border: 0;
+    padding: 12px 0 12px 40px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.image-gallery-main {
+    width: 100%;
+    margin: 10px 0;
+    float:  left;
+    padding-bottom: 10px;
+    border-top: 1px solid #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
+}
+.available-rooms {
+    width: 100%;
+    float:  left;
+}
+
+.available-rooms p {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.available-rooms input {
+    width: 100%;
+    padding: 15px 0 12px 45px;
+    border: 0;
+    background: url('../img/sprite.png') no-repeat 3px -439px #fff;
+    color:#000;
+    font-weight: bold;
+}
+
+.innet-table {
+    background: #ffffffcf;
+    width: 100%;
+    float:  left;
+    margin: 15px 0 0 0;
+    padding: 10px;
+}
+
+h1.table-heading01 {
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color:  #000;
+}
+
+.inner-price-text p{
+    font-size: 12px;
+    color: #000;
+    display: inline-block;
+}
+
+.inner-price-text p strong {
+    font-size: 15px;
+}
+.inner-price-text {
+    text-align: right;
+}
+
+.inner-price-text a {
+    display: inline-block;
+    background: #03316c;
+    color:  #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin: 0 0px 0 15px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+.table-details-box {
+    width: 100%;
+    float:  left;
+    background: #054c82;
+    padding: 8px 8px 8px 15px;
+    margin: 10px 0 0 0;
+}
+
+.table-details-box h1 {
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.meal select {
+    width: 100%;
+    float:  left;
+    padding: 6px;
+    border: 0;
+    font-size: 12px;
+    color:  #000;
+    background: url('../img/inner-arrow.png') no-repeat right 5px center #fff;
+}
+
+.meal {
+    width: 15%;
+    float:  left;
+    margin: 0 0 0 10px;
+}
+
+.inner-price {
+    width: 12%;
+    float:  left;
+    margin: 0 0 0 10px;
+}
+
+.inner-price select {
+    width: 100%;
+    float: left;
+    color: #000;
+    padding: 6px;
+    border: 0;
+    font-size: 12px;
+    background: url('../img/inner-arrow.png') no-repeat right 5px center #fff;
+}
+
+.search-room-type {
+    width: 40%;
+    float: left;
+}
+
+.search-room-type input {
+    padding: 5px 0 5px 10px;
+    border: 0;
+    margin: 0 0 0 10px;
+    width: 100%;
+    border: 0;
+    font-size: 12px;
+}
+
+.free-cancellation {
+    float:  left;
+    background: #fff;
+}
+
+
+
+/* Customize the label (the container) */
+.free-cancellation-chck {
+    display: block;
+    position: relative;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    padding-left: 27px;
+    padding-top: 7px;
+    color:  #000;
+    padding-right: 15px;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    float:  right;
+}
+
+/* Hide the browser's default radio button */
+.free-cancellation-chck input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom radio button */
+.free-cancellation-chck .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    background: #fff!important;
+    height: 15px;
+    border: 1px solid #aaaaaa;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+/* On mouse-over, add a grey background color */
+.home-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.free-cancellation-chck input:checked ~ .checkmark {
+    background: #2196F3 !important;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.free-cancellation-chck .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.free-cancellation-chck input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.free-cancellation-chck .checkmark:after {
+    top: -1px;
+    left: -1px;
+    width: 15px;
+    height: 15px;
+    background: #f26522;
+    border-radius: 2px;
+}
+
+
+.table td p{margin: 0}
+
+
+
+/* Customize the label (the container) */
+.table-chck {
+    display: block;
+    position: relative;
+    margin-left: 25px;
+    cursor: pointer;
+    color:  #000;
+    /* padding-right: 15px; */
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.table-chck input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom radio button */
+.table-chck .checkmark {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    background: #fff !important;
+    height: 13px;
+    border: 1px solid #aaaaaa;
+    width: 13px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.home-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.table-chck input:checked ~ .checkmark {
+    background: #fff !important;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.table-chck .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.table-chck input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.table-chck .checkmark:after {
+    top: 2px;
+    left: 2px;
+    width: 6px;
+    height: 6px;
+    background: #f26522;
+    border-radius: 50%;
+}
+
+.my-table td{padding: 5px 0 5px 0 !important;border-bottom: 2px solid #bfbfbf;color:  #000;font-size: 12px;font-weight: bold;}
+
+
+.my-table {
+    width: 100%;
+    float: left;
+}
+
+.my-table td+td+td+td+td+td {
+    border-left: 2px solid #03316c;
+    text-align: center;
+}
+
+.my-table td+td+td+td+td {
+    text-align: right;
+}
+
+.my-table td+td+td {
+    text-align: center;
+}
+
+.my-table td+td+td+td {
+    text-align: left;
+}
+.my-table td p strong {
+    display:  block;
+    line-height: 10px;
+    color: #0366b0;
+}
+
+.my-table td a{color: #0366b0;transition: none;}
+
+.my-table td+td+td+td+td img {
+    margin: 0 5px 0px 2px;
+}
+
+.plus {
+    background: #045999;
+    color:  #fff;
+    border-radius: 2px;
+    width: 18px;
+    margin: 5px auto;
+    cursor: pointer;
+}
+
+.my-table tr:hover {
+    background: #ff8d00;
+}
+
+.my-table tr:hover td {
+    color:  #fff;
+}
+
+.my-table tr:hover td a{
+    color:  #fff;
+    transition: none;
+}
+
+/* John Doe css starts here*/
 .white-color{
     color:white;
 }
@@ -137,9 +1861,22 @@ header .top_header ul li i, header .top_header ul li span {
     font-weight: 500;}
 
 
-.btn-search a img{
+.btn-search button img{
     height: 194px;
-    margin-top: -89px;
+    margin-top: -90px;
     margin-left: 1px;
 }
 
+.child-age{
+    padding-top: 15px;
+}
+
+.btn-search-img{
+    border: 0px;
+    background: transparent;
+}
+
+.errormsg{
+    background-color: red !important;
+    padding: 12px;
+}

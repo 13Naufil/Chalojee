@@ -1,10 +1,10 @@
 <?php
-Class Search extends CI_Model {
+Class Destination extends CI_Model {
 
     public function fetchall() {
 
         $this->db->select('*');
-        $this->db->from('c_designation');
+        $this->db->from('c_destination');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->result();
@@ -15,7 +15,7 @@ Class Search extends CI_Model {
 
     public function add($data){
        // print_r($data); exit;
-        $this->db->insert('c_designation', $data);
+        $this->db->insert('c_destination', $data);
         if ($this->db->affected_rows() > 0) {
             return true;
         }else{
@@ -27,7 +27,7 @@ Class Search extends CI_Model {
     public function update($data,$id){
 
         $this->db->where('id',$id);
-        $this->db->update('c_designation',$data);
+        $this->db->update('c_destination',$data);
         if ($this->db->affected_rows() > 0) {
             return true;
         }
@@ -35,16 +35,16 @@ Class Search extends CI_Model {
 
     public function delete($id){
         $this->db->where('id', $id);
-        $this->db->delete('c_designation');
+        $this->db->delete('c_destination');
         if ($this->db->affected_rows() > 0) {
             return true;
         }
     }
 
     public function fetchbyid($id){
-        $condition = "id=".$id;
+        $condition = "CityCode=".$id;
         $this->db->select('*');
-        $this->db->from('c_designation');
+        $this->db->from('c_destination');
         $this->db->where($condition);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -56,7 +56,7 @@ Class Search extends CI_Model {
 
     public function fetchbyStr($str,$limit)
     {
-        $sql = "SELECT CityCode,CityName FROM c_designation WHERE CityName LIKE '%$str%' LIMIT ".$limit;
+        $sql = "SELECT CityCode,CityName FROM c_destination WHERE CityName LIKE '%$str%' LIMIT ".$limit;
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             return $query->result();

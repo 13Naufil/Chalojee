@@ -9,17 +9,23 @@ class Search extends Curl {
 	public $password;
 
 
-	public function HotelSearch($CheckInDate,$CheckOutDate,$CountryName,$CityName,$CityId,$IsNearBySearchAllowed,$NoOfRooms,$GuestNationality,$RoomGuests,$ResultCount,$Filters)
-	{
-		
-		$username = $this->username;
-		$password = $this->password;
+    public function HotelSearch($CheckInDate,$CheckOutDate,$CountryName,$CityName,$CityId,$IsNearBySearchAllowed,$NoOfRooms,$GuestNationality,$RoomGuests,$ResultCount,$Filters)
+    {
 
-		$url = WSDL;
-		$xmlns = WSDL_ACTION;
-		$soap_envolope = SOAP_ENV;
-		$w3_addressing = W3_ADDRESSING;
-		$action = WSDL_ACTION."/HotelSearch";
+        $username = $this->username;
+        $password = $this->password;
+
+
+        $adult = $RoomGuests['AdultCount'];
+        $child = $RoomGuests['ChildCount'];
+
+        $StarRating = $Filters['StarRating'];
+        $OrderBy = $Filters['OrderBy'];
+        $url = WSDL;
+        $xmlns = WSDL_ACTION;
+        $soap_envolope = SOAP_ENV;
+        $w3_addressing = W3_ADDRESSING;
+        $action = WSDL_ACTION."/HotelSearch";
 
         $soap = <<<EOD
 <?xml version="1.0" encoding="utf-8" ?>
@@ -40,32 +46,28 @@ class Search extends Curl {
       <hot:NoOfRooms>$NoOfRooms</hot:NoOfRooms>
       <hot:GuestNationality>$GuestNationality</hot:GuestNationality>
       <hot:RoomGuests>
-        <hot:RoomGuest AdultCount="$RoomGuests[AdultCount]" ChildCount="$RoomGuests[ChildCount]">
-            <hot:ChildAge>
-             <hot:int>5</hot:int>
-             <hot:int>13</hot:int>
-            </hot:ChildAge>
+        <hot:RoomGuest AdultCount="$adult" ChildCount="$child">
         </hot:RoomGuest>
       </hot:RoomGuests>
       <hot:ResultCount>$ResultCount</hot:ResultCount>
       <hot:Filters>
-        <hot:StarRating>$Filters[StarRating]</hot:StarRating>
-        <hot:OrderBy>$Filters[OrderBy]</hot:OrderBy>
+        <hot:StarRating>$StarRating</hot:StarRating>
+        <hot:OrderBy>$OrderBy</hot:OrderBy>
       </hot:Filters>
     </hot:HotelSearchRequest>
   </soap:Body>
 </soap:Envelope>
 EOD;
 
-		$headers = array(
-		'Content-Type: application/soap+xml; charset=utf-8',
-		'Content-Length: '.strlen($soap),
-		'SOAPAction: ' .$action
-		);
+        $headers = array(
+            'Content-Type: application/soap+xml; charset=utf-8',
+            'Content-Length: '.strlen($soap),
+            'SOAPAction: ' .$action
+        );
 
-	return $this->request($url,$soap,$headers);
+        return $this->request($url,$soap,$headers);
 
-	}
+    }
 
 
 	public function AvailableHotelRooms($SessionId,$ResultIndex,$HotelCode)
