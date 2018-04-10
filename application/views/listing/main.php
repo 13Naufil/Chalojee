@@ -594,8 +594,9 @@
                             <?php
                                 echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
                                 echo form_hidden('ResultIndex',$item['ResultIndex']);
+                                echo form_hidden('HotelCode',$item['HotelCode']);
                             ?>
-                            <button type="submit"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
+                            <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
                             <?php echo form_close();?>
                         </div>
                         <?php

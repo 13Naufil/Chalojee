@@ -1764,6 +1764,46 @@ h1.table-heading01 {
     color:  #fff;
     transition: none;
 }
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    color: #444;
+    cursor: pointer;
+    padding: 18px 45px;
+    text-align: left;
+    border: none;
+    outline: none;
+    width: 100%;
+    transition: 0.4s;
+    position: relative;
+    background: url('../img/sprite.png') no-repeat 1131px -392px #fff;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    /* background-color: #ff8d00; */
+    /* color:  #fff; */
+    /* width: 100%; */
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 18px;
+    background-color: #fff;
+    display: none;
+    overflow: hidden;
+    color:  #000;
+}
+button.accordion:before {
+    background: url(../img/sprite.png) no-repeat -89px -357px;
+    width: 26px;
+    height: 20px;
+    position: absolute;
+    content: "";
+    top: 10px;
+    left: 9px;
+    z-index: 99;
+}
+
 
 /* John Doe css starts here*/
 .white-color{
@@ -1872,11 +1912,15 @@ header .top_header ul li i, header .top_header ul li span {
 }
 
 .btn-search-img{
-    border: 0px;
-    background: transparent;
+    border: 0px !important;
+    background: transparent !important;
 }
 
 .errormsg{
     background-color: red !important;
     padding: 12px;
+}
+
+.amenities ul > li {
+    padding-top: 5px !important;
 }

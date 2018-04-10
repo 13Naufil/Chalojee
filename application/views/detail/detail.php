@@ -27,7 +27,6 @@
     <!-- Top Header Section End -->
 
 
-
     <!-- Header Section Start -->
     <div class="clearfix"></div>
     <header class="main-menu">
@@ -37,14 +36,14 @@
             <div class="row">
                 <div class="col-md-3">
                     <div id="wrap">
-                        <img src="img/logo.png">
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>img/logo.png"></a>
                     </div>
                 </div>
                 <div class="col-md-9 pad-right">
-                    <div class="recharge">
+                   <!-- <div class="recharge">
                         <p>Avl Limit : $ 0.00 </p>
                         <button class="btn">Recharge</button>
-                    </div>
+                    </div>-->
                 </div>
                 <!-- Logo Section End -->
 
@@ -62,7 +61,7 @@
                         </div>
                         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">Hotels</a></li>
+                                <li class="active"><a href="#">Hotels</a></li>
                                 <li><a href="#">Queues</a></li>
                                 <li><a href="#">Accounts</a></li>
                                 <li><a href="#">Reports</a></li>
@@ -115,11 +114,12 @@
     <!-- Header Bottom Links End -->
 
 
-
+    <?php if($data != ''): ?>
+        <?php print_r($data);?>
     <div class="container">
         <!-- Inner Hotel Details Section Start -->
         <div class="hotel-details-inner">
-            <h1>Summit Hotel</h1>
+            <h1><?php echo $data['HotelDetails']['@attributes']['HotelName']; ?></h1>
             <p>Check In 23-Mar-2018 Check Out 24-Apr-2018</p>
             <div class="inner-content-star">
                 <i class="fa fa-star"></i>
@@ -127,23 +127,23 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <span class="cont-face"></span>
-                <img src="img/full-circle.png" />
-                <img src="img/full-circle.png" />
-                <img src="img/full-circle.png" />
-                <img src="img/half-circle.png" />
-                <img src="img/full-empty-circle.png" />
+                <img src="<?php echo base_url(); ?>img/full-circle.png" />
+                <img src="<?php echo base_url(); ?>img/full-circle.png" />
+                <img src="<?php echo base_url(); ?>img/full-circle.png" />
+                <img src="<?php echo base_url(); ?>img/half-circle.png" />
+                <img src="<?php echo base_url(); ?>img/full-empty-circle.png" />
             </div>
-            <div class="inner-loc">34 B Street, Dubai, Dubai, 64264, United Arab Emirates</div>
+            <div class="inner-loc"><?php echo $data['HotelDetails']['Address']; ?></div>
         </div>
         <!-- Inner Hotel Details Section End -->
 
         <!-- Hotel Links Section Start -->
         <div class="inner-hotel-links">
             <ul>
-                <li><a href="javascript:;"><img src="img/inner-pic/01.png" />Available Rooms</a></li>
-                <li><a href="javascript:;"><img src="img/inner-pic/02.png" />Hotel Details</a></li>
-                <li><a href="javascript:;"><img src="img/inner-pic/03.png" />Image Gallery</a></li>
-                <li><a href="javascript:;"><img src="img/inner-pic/04.png" />Hotel Map</a></li>
+                <li><a href="javascript:;"><img src="<?php echo base_url(); ?>img/inner-pic/01.png" />Available Rooms</a></li>
+                <li><a href="javascript:;"><img src="<?php echo base_url(); ?>img/inner-pic/02.png" />Hotel Details</a></li>
+                <li><a href="javascript:;"><img src="<?php echo base_url(); ?>img/inner-pic/03.png" />Image Gallery</a></li>
+                <li><a href="javascript:;"><img src="<?php echo base_url(); ?>img/inner-pic/04.png" />Hotel Map</a></li>
             </ul>
         </div>
         <!-- Hotel Links Section End -->
@@ -151,14 +151,61 @@
         <!-- Image Gallery Section Start -->
         <div class="image-gallery-main">
             <div class="image-gallery">
-                <button class="accordion">Image Gallery</button>
+                <button class="accordion">Hotel Details</button>
                 <div class="panel">
-                    <p>Lorem ipsum...</p>
+                    <p><?php echo stripslashes($data['HotelDetails']['Description']); ?></p>
                 </div>
 
             </div>
         </div>
         <!-- Image Gallery Section End -->
+
+        <!-- Image Gallery Section Start -->
+        <div class="image-gallery-main">
+            <div class="image-gallery">
+                <button class="accordion">Image Gallery</button>
+                <div class="panel">
+                    <div class="col col-lg-12">
+                        <div class="row">
+                            <?php foreach ($data['HotelDetails']['ImageUrls']['ImageUrl'] as $img):?>
+                            <div class="col col-lg-2">
+                                <img src="<?php echo $img;?>" class="img-responsive"/>
+                            </div>
+                            <?php endforeach;?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Image Gallery Section End -->
+        <!-- Map Section Start -->
+        <div class="image-gallery-main">
+            <div class="image-gallery">
+                <button class="accordion">Map</button>
+                <div class="panel">
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Map Section End -->
+        <!-- Other Facilities Section Start -->
+        <div class="image-gallery-main">
+            <div class="image-gallery amenities">
+                <button class="accordion">Basic Amenities</button>
+                <div class="panel">
+                    <ul>
+                        <?php foreach ($data['HotelDetails']['HotelFacilities']['HotelFacility'] as $amenities):?>
+                            <li><?php echo stripslashes($amenities); ?></li>
+                        <?php endforeach;?>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Other Facilities Section End -->
 
         <!-- Available Rooms Section Start -->
         <div class="available-rooms">
@@ -227,7 +274,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -243,7 +290,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -259,7 +306,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -275,7 +322,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -291,7 +338,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -307,7 +354,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -323,7 +370,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -339,7 +386,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -355,7 +402,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -371,7 +418,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -387,7 +434,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="img/price-icon.png" /></td>
+                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
 
@@ -399,6 +446,12 @@
             </div>
         </div>
     </div>
-
+   <?php else: ?>
+    <div class="container">
+        <div class="row errormsg">
+            <p><?php echo $message; ?></p>
+        </div>
+    </div>
+    <?php endif; ?>
     <?php include(APPPATH.'views/common/top_footer.php'); ?>
     <?php include(APPPATH.'views/common/footer.php'); ?>

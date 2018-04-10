@@ -91,11 +91,17 @@ class Main extends CI_Controller {
     {
         $SessionId = isset($_POST['SessionId']) ? $_POST['SessionId'] : '';
         $ResultIndex = isset($_POST['ResultIndex']) ? $_POST['ResultIndex'] : 0;
+        $HotelCode = isset($_POST['HotelCode']) ? $_POST['HotelCode'] : 0;
 
-        if($SessionId != '' && $ResultIndex != 0)
+
+        if($SessionId != '' && $ResultIndex != 0 && $HotelCode != 0)
         {
             $response = $this->search->HotelDetails($SessionId,$ResultIndex);
-            $data = array('data'=>$response[0],'message'=>'Fetch Data Successfully','home'=>'inner-bg');
+            if($response[0]['HotelDetailsResponse']['Status']['StatusCode'] == 1)
+            {
+                $room_details = $this->search->AvailableHotelRooms($SessionId,$ResultIndex,$HotelCode);
+                $data = array('data'=>$response[0]['HotelDetailsResponse'],'message'=>'Fetch Data Successfully','home'=>'inner-bg');
+            }
         }
         else
         {
