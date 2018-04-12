@@ -115,7 +115,6 @@
 
 
     <?php if($data != ''): ?>
-        <?php print_r($data);?>
     <div class="container">
         <!-- Inner Hotel Details Section Start -->
         <div class="hotel-details-inner">
@@ -162,7 +161,7 @@
 
         <!-- Image Gallery Section Start -->
         <div class="image-gallery-main">
-            <div class="image-gallery">
+            <div class="image-gallery" id="detail-list">
                 <button class="accordion">Image Gallery</button>
                 <div class="panel">
                     <div class="col col-lg-12">
@@ -180,11 +179,24 @@
         </div>
         <!-- Image Gallery Section End -->
         <!-- Map Section Start -->
+        <?php
+
+            if(!empty($data['HotelDetails']['Map'])):
+                $cordinates = explode("|",$data['HotelDetails']['Map']);
+                $lat = $cordinates[0];
+                $long = $cordinates[1];
+                print_r($lat); print_r($long);
+            endif;
+
+
+        ?>
         <div class="image-gallery-main">
             <div class="image-gallery">
                 <button class="accordion">Map</button>
                 <div class="panel">
-
+                    <input type="hidden" id="lat" value="<?php echo $lat; ?>">
+                    <input type="hidden" id="long" value="<?php echo $long; ?>">
+                    <div id="map" style="height: 350px;"></div>
                 </div>
 
             </div>
@@ -261,6 +273,12 @@
                 <div class="my-table">
                     <div class="table-responsive">
                         <table class="table">
+                            <?php
+                             foreach($room_details['HotelRooms']['HotelRoom'] as $room): ?>
+                                 <?php  echo form_hidden('RoomIndex',$room['RoomIndex']); ?>
+                                 <?php  echo form_hidden('RoomTypeCode',$room['RoomTypeCode']); ?>
+                                 <?php  echo form_hidden('RatePlanCode',$room['RatePlanCode']); ?>
+
                             <tr>
                                 <td align="center" width="100px">
                                     <label class="table-chck">
@@ -268,13 +286,30 @@
                                         <span class="checkmark"></span>
                                     </label></td>
                                 <td width="300px">
-                                    <p >Deluxe
+                                    <p><?php echo $room['RoomTypeName']; ?>
                                         <strong>Show Room Description</strong>
                                         <span>Early Bird Offer</span></p>
                                 </td>
-                                <td width="240px">Room Only</td>
+                                <td width="240px"><?php echo $room['Inclusion'] != null ? $room['Inclusion'] : 'Room Only'; ?></td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ <?php echo $room['RoomRate']['@attributes']['TotalFare']; ?> <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="40px"><div class="plus">+</div></td>
+                            </tr>
+                            <?php endforeach;?>
+                           <!-- <tr>
+                                <td align="center" width="100px">
+                                    <label class="table-chck">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label></td>
+                                <td width="300px">
+                                    <p >Deluxe
+                                        <strong>Show Room Description</strong>
+                                    </p>
+                                </td>
+                                <td width="240px">Room Only</td>
+                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -290,7 +325,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -306,7 +341,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -322,7 +357,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -338,39 +373,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -386,39 +389,7 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ 1976.38 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <tr>
@@ -434,9 +405,57 @@
                                 </td>
                                 <td width="240px">Room Only</td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px">$ 1976.38 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
+                            <tr>
+                                <td align="center" width="100px">
+                                    <label class="table-chck">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label></td>
+                                <td width="300px">
+                                    <p >Deluxe
+                                        <strong>Show Room Description</strong>
+                                    </p>
+                                </td>
+                                <td width="240px">Room Only</td>
+                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
+                                <td width="40px"><div class="plus">+</div></td>
+                            </tr>
+                            <tr>
+                                <td align="center" width="100px">
+                                    <label class="table-chck">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label></td>
+                                <td width="300px">
+                                    <p >Deluxe
+                                        <strong>Show Room Description</strong>
+                                    </p>
+                                </td>
+                                <td width="240px">Room Only</td>
+                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
+                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
+                                <td width="40px"><div class="plus">+</div></td>
+                            </tr>
+                            <tr>
+                                <td align="center" width="100px">
+                                    <label class="table-chck">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label></td>
+                                <td width="300px">
+                                    <p >Deluxe
+                                        <strong>Show Room Description</strong>
+                                    </p>
+                                </td>
+                                <td width="240px">Room Only</td>
+                                <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
+                                <td width="150px">$ 1976.38 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
+                                <td width="40px"><div class="plus">+</div></td>
+                            </tr>-->
 
 
                         </table>
@@ -453,5 +472,42 @@
         </div>
     </div>
     <?php endif; ?>
+
+    <script>
+        function initMap() {
+            var latitude = $('#lat').val();
+            var longitude = $('#long').val();
+
+            var cordinate = {lat: latitude, lng: longitude};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: cordinate
+            });
+            var marker = new google.maps.Marker({
+                position: cordinate,
+                map: map
+            });
+        }
+
+        function myMap() {
+
+            var latitude = $('#lat').val();
+            var longitude = $('#long').val();
+
+            var mapProp= {
+                center:new google.maps.LatLng(latitude,longitude),
+                zoom:20,
+            };
+            var map=new google.maps.Map(document.getElementById("map"),mapProp);
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(latitude,longitude),
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANDYAOXDdZGOJklGCXqVgPbDC_UcF0hL8&callback=myMap">
+    </script>
+
     <?php include(APPPATH.'views/common/top_footer.php'); ?>
     <?php include(APPPATH.'views/common/footer.php'); ?>

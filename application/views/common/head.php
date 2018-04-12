@@ -22,6 +22,10 @@
     <link href="<?php echo base_url(); ?>css/responsive.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>css/jquery-ui.css" rel="stylesheet">
 
+    <?php if(isset($login)):?>
+    <link href="<?php echo base_url(); ?>css/login.css" rel="stylesheet">
+    <?php endif;?>
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
 
     <!--[if lt IE 9]>

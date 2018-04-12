@@ -1805,6 +1805,10 @@ button.accordion:before {
 }
 
 
+
+
+
+
 /* John Doe css starts here*/
 .white-color{
     color:white;
@@ -1923,4 +1927,12 @@ header .top_header ul li i, header .top_header ul li span {
 
 .amenities ul > li {
     padding-top: 5px !important;
+}
+
+#detail-list img {
+    padding-top: 25px !important;
+}
+
+.black-color{
+    color: black;
 }

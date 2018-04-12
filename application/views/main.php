@@ -15,7 +15,7 @@
         </div>
         <div class="search">
             <?php $attributes = array('id' => 'searchId'); ?>
-            <?php echo form_open_multipart('main/search', $attributes);  ?>
+            <?php echo form_open_multipart('listing', $attributes);  ?>
             <div class="row search-panel text-center">
 
 
@@ -114,8 +114,6 @@
 
 <script>
     $( function() {
-        //var base_url = "<?php echo base_url(); ?>index.php/Main/HotelSearch";
-        //console.log(base_url);
 
     $('#search').autocomplete({
         source : function(request, response){
@@ -128,7 +126,6 @@
             },
             success: function(data)
             {
-                console.log(data); // show response from the php script.
                 $("#suggesstion-box").show();
                 $("#suggesstion-box").html(data);
                 $("#suggesstion-box").css("background","#FFF");

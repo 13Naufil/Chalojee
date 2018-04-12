@@ -247,7 +247,7 @@
 
                         </div>
                     </div>
-                    <h2>Property Type</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
+                  <!--  <h2>Property Type</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
                     <div class="star-rating">
                         <div class="star-rating-inner">
                             <label class="chck-cont">
@@ -263,8 +263,8 @@
                             </label>
                             <span>Apartment (33)</span>
                         </div>
-                    </div>
-                    <h2>Location</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
+                    </div>-->
+                    <!--<h2>Location</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
                     <div class="star-rating">
                         <div class="star-rating-inner">
                             <label class="chck-cont">
@@ -455,7 +455,7 @@
                             </label>
                             <span>Dubai Desert Conservation Reserve Dubai (1)</span>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <!--All Filter Section End -->
 
@@ -571,7 +571,7 @@
                                 <p><?php echo $item['HotelInfo']['HotelDescription'];?><a href="javascript:;">more details</a>
                                 </p>
                                 <div class="clearfix"></div>
-                                <a href="javascript:;" class="content-payment">Pay at hotel options also available</a>
+                                <!--<a href="javascript:;" class="content-payment">Pay at hotel options also available</a>-->
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -590,11 +590,11 @@
                         <div class="booking-div">
                             <button>Book Now</button>
                             <?php $attributes = array('id' => 'searchId'); ?>
-                            <?php echo form_open_multipart('main/detail', $attributes);  ?>
+                            <?php echo form_open_multipart('detail', $attributes);  ?>
                             <?php
                                 echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
                                 echo form_hidden('ResultIndex',$item['ResultIndex']);
-                                echo form_hidden('HotelCode',$item['HotelCode']);
+                               echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
                             ?>
                             <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
                             <?php echo form_close();?>

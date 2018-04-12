@@ -23,7 +23,6 @@ class Main extends CI_Controller {
         $str = isset($_POST['str']) ? $_POST['str'] : '';
         $limit = isset($_POST['limit']) ? $_POST['limit'] : 10;
         $record = $this->destination->fetchbyStr($str,$limit);
-        //$data = array("abc","cde","edgf","khk");
         $data = "<ul id=\"country-list\">";
         if($record == false){
             $data = '<li>No result found</li>';
@@ -100,7 +99,7 @@ class Main extends CI_Controller {
             if($response[0]['HotelDetailsResponse']['Status']['StatusCode'] == 1)
             {
                 $room_details = $this->search->AvailableHotelRooms($SessionId,$ResultIndex,$HotelCode);
-                $data = array('data'=>$response[0]['HotelDetailsResponse'],'message'=>'Fetch Data Successfully','home'=>'inner-bg');
+                $data = array('data'=>$response[0]['HotelDetailsResponse'],'room_details'=>$room_details[0]['HotelRoomAvailabilityResponse'],'message'=>'Fetch Data Successfully','home'=>'inner-bg');
             }
         }
         else
