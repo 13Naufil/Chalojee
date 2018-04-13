@@ -6,6 +6,9 @@ class Main extends CI_Controller {
     public function __construct(){
         parent::__construct();
         //$this->load->library("common");
+
+        $this->load->helper('temp_helper');
+
         $this->load->library("search");
         $this->load->model("destination");
         $this->search->username = WSDL_USERNAME;
@@ -91,6 +94,11 @@ class Main extends CI_Controller {
         $SessionId = isset($_POST['SessionId']) ? $_POST['SessionId'] : '';
         $ResultIndex = isset($_POST['ResultIndex']) ? $_POST['ResultIndex'] : 0;
         $HotelCode = isset($_POST['HotelCode']) ? $_POST['HotelCode'] : 0;
+        $CheckInDate = isset($_POST['CheckInDate']) ? $_POST['CheckInDate'] : '';
+        $CheckOutDate = isset($_POST['CheckOutDate']) ? $_POST['CheckOutDate'] : '';
+        $TripAdvisorRating = isset($_POST['TripAdvisorRating']) ? $_POST['TripAdvisorRating'] : '';
+        $TripAdvisorReviewURL = isset($_POST['TripAdvisorReviewURL']) ? $_POST['TripAdvisorReviewURL'] : '';
+        $Rating = isset($_POST['Rating']) ? $_POST['Rating'] : '';
 
 
         if($SessionId != '' && $ResultIndex != 0 && $HotelCode != 0)
@@ -99,7 +107,7 @@ class Main extends CI_Controller {
             if($response[0]['HotelDetailsResponse']['Status']['StatusCode'] == 1)
             {
                 $room_details = $this->search->AvailableHotelRooms($SessionId,$ResultIndex,$HotelCode);
-                $data = array('data'=>$response[0]['HotelDetailsResponse'],'room_details'=>$room_details[0]['HotelRoomAvailabilityResponse'],'message'=>'Fetch Data Successfully','home'=>'inner-bg');
+                $data = array('data'=>$response[0]['HotelDetailsResponse'],'room_details'=>$room_details[0]['HotelRoomAvailabilityResponse'],'Rating'=>$Rating,'TripAdvisorRating'=>$TripAdvisorRating,'TripAdvisorReviewURL'=>$TripAdvisorReviewURL,'CheckInDate'=>$CheckInDate,'CheckOutDate'=>$CheckOutDate,'SessionId'=>$SessionId,'ResultIndex'=>$ResultIndex,'message'=>'Fetch Data Successfully','home'=>'inner-bg');
             }
         }
         else

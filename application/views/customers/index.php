@@ -1,5 +1,6 @@
 <?php include(APPPATH.'views/common/head.php'); ?>
 <?php include(APPPATH.'views/common/header.php'); ?>
+<?php include(APPPATH.'views/common/navigation.php'); ?>
 
 <div class="container">
     <div class="row">
@@ -83,19 +84,19 @@
         <div class="col-sm-5">
             <?php
 
-            if (isset($this->session->userdata['message_display'])) {
+            if (isset($this->session->userdata['message_display_l'])) {
                 echo "<div class='alert alert-info'>";
-                echo $this->session->userdata['message_display'];
-                $this->session->unset_userdata('message_display');
+                echo $this->session->userdata['message_display_l'];
+                $this->session->unset_userdata('message_display_l');
                 echo "</div>";
             }
             $attributes = array('id' => 'msform','class'=>'login-top'); ?>
             <?php echo form_open_multipart('customers/validateuser', $attributes);
 
-                if (isset($this->session->userdata['errors'])) {
+                if (isset($this->session->userdata['errors_l'])) {
                     echo "<div class='alert alert-danger'>";
-                    echo $this->session->userdata['errors'];
-                    $this->session->unset_userdata('errors');
+                    echo $this->session->userdata['errors_l'];
+                    $this->session->unset_userdata('errors_l');
                     echo "</div>";
                 }
 

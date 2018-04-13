@@ -1,32 +1,6 @@
 <?php include(APPPATH.'views/common/head.php'); ?>
+<?php include(APPPATH.'views/common/header.php'); ?>
 <div class="main">
-    <!-- Top Header Section Start -->
-    <div class="top-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="lang">
-                        <select>
-                            <option>EN</option>
-                            <option>Gr</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="up-text">
-                        <p>Start New Quotation / My Quotation</p>
-                        <span>1</span>
-                        <p>Saba Siddiq (Change Profile)</p>
-                        <button>Logout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Top Header Section End -->
-
-
-
     <!-- Header Section Start -->
     <div class="clearfix"></div>
     <header class="main-menu">
@@ -122,6 +96,7 @@
                 <!--Modify Filter Section Start -->
                 <div class="filter">
                     <h1>Your Hotel Search</h1>
+
                     <input class="loc-inpt" type="text" Placeholder="Dubai,United Arab Emirates" />
                     <input class="date-inpt" type="text" Placeholder="21Night(s) 27-Mar-2018 - 17-Apr-2018 " />
                     <div class="fltr-srch">
@@ -556,6 +531,7 @@
                     <div class="content-details">
                         <?php
                             if($StatusCode == 1){
+
                                 foreach ($data['HotelSearchResponse']['HotelResultList']['HotelResult'] as $item):
                         ?>
                         <div class="col-md-3 pad-both">
@@ -564,11 +540,11 @@
                         <div class="col-md-7">
                             <div class="inner-content-details">
                                 <h1><?php echo $item['HotelInfo']['HotelName'];?></h1><a href="javascript:;" class="content-map">Show Map</a>
-                                <div class="content-star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                <div class="content-star"><?php echo get_rating($item['HotelInfo']['Rating']); ?>
                                     <span class="cont-face"></span>
-                                    <img src="<?php echo base_url(); ?>img/full-circle.png" /><img src="<?php echo base_url(); ?>img/full-circle.png" /><img src="<?php echo base_url(); ?>img/full-circle.png" /><img src="<?php echo base_url(); ?>img/half-circle.png" /><img src="<?php echo base_url(); ?>img/full-empty-circle.png" /></div>
+                                    <a href="<?php echo $item['HotelInfo']['TripAdvisorReviewURL']; ?>"><?php echo get_tripadvisor_rating($item['HotelInfo']['TripAdvisorRating']);?></a></div>
                                 <h3>Property Location</h3>
-                                <p><?php echo $item['HotelInfo']['HotelDescription'];?><a href="javascript:;">more details</a>
+                                <p><?php echo (strlen($item['HotelInfo']['HotelDescription']) > 30) ? substr($item['HotelInfo']['HotelDescription'],0,250).'...' : $item['HotelInfo']['HotelDescription'];?><a href="javascript:;">more details</a>
                                 </p>
                                 <div class="clearfix"></div>
                                 <!--<a href="javascript:;" class="content-payment">Pay at hotel options also available</a>-->
@@ -588,13 +564,18 @@
                             </div>
                         </div>
                         <div class="booking-div">
-                            <button>Book Now</button>
+                            <a class="btn btn-primary" href="<?php echo base_url();?>booking">Book Now</a>
                             <?php $attributes = array('id' => 'searchId'); ?>
                             <?php echo form_open_multipart('detail', $attributes);  ?>
                             <?php
-                                echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
-                                echo form_hidden('ResultIndex',$item['ResultIndex']);
-                               echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
+                            echo form_hidden('TripAdvisorRating',$item['HotelInfo']['TripAdvisorRating']);
+                            echo form_hidden('TripAdvisorReviewURL',$item['HotelInfo']['TripAdvisorReviewURL']);
+                            echo form_hidden('Rating',$item['HotelInfo']['Rating']);
+                            echo form_hidden('CheckInDate',$data['HotelSearchResponse']['CheckInDate']);
+                            echo form_hidden('CheckOutDate',$data['HotelSearchResponse']['CheckOutDate']);
+                            echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
+                            echo form_hidden('ResultIndex',$item['ResultIndex']);
+                            echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
                             ?>
                             <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
                             <?php echo form_close();?>

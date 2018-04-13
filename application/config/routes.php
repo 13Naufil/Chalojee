@@ -55,6 +55,8 @@ $route['default_controller'] = 'main';
 $route['listing'] = 'main/search';
 $route['detail'] = 'Main/Detail';
 $route['account'] = 'customers/index';
+$route['booking'] = 'booking/index';
+$route['logout'] = 'customers/logout';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -17,10 +17,13 @@
                     <li><a href="#">Airport Taxis</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
+                <?php if(!isset($this->session->userdata['logged_in'])):?>
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="<?php echo base_url(); ?>account">Register</a></li>
                     <li><a href="<?php echo base_url(); ?>account">Login</a></li>
                 </ul>
+                <?php endif; ?>
+
             </div>
         </div>
     </nav>

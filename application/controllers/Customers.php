@@ -76,10 +76,10 @@ class Customers extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
         if ($this->form_validation->run() == FALSE) {
             if(isset($this->session->userdata['logged_in'])){
-                $this->session->set_userdata('errors', validation_errors());
+                $this->session->set_userdata('errors_l', validation_errors());
                 redirect('/account', 'refresh');
             }else{
-                redirect('/listing', 'refresh');
+                redirect('/', 'refresh');
             }
         } else {
 
@@ -93,9 +93,9 @@ class Customers extends CI_Controller {
             if ($result != FALSE) {
                 $session_data = array('userid' => $result[0]->id,'Email' => $result[0]->Email,'FirstName' => $result[0]->FirstName,'LastName' => $result[0]->LastName,'Age' => $result[0]->Age,'AddressLine1'=>$result[0]->AddressLine1,'AddressLine2'=>$result[0]->AddressLine2,'PhoneNo'=>$result[0]->PhoneNo,'City'=>$result[0]->City,'State'=>$result[0]->State,'Country'=>$result[0]->Country,'ZipCode'=>$result[0]->ZipCode);
                 $this->session->set_userdata('logged_in', $session_data);
-                redirect('/account', 'refresh');
+                redirect('/', 'refresh');
             } else {
-                $this->session->set_userdata('errors', 'Invalid Email or Password');
+                $this->session->set_userdata('errors_l', 'Invalid Email or Password');
                 redirect('/account', 'refresh');
             }
         }
@@ -105,7 +105,7 @@ class Customers extends CI_Controller {
     public function logout() {
         $session = array('userid' =>'','Email' =>'','FirstName' =>'','LastName' =>'','Age' =>'','AddressLine1'=>'','AddressLine2'=>'','PhoneNo'=>'','City'=>'','State'=>'','Country'=>'','ZipCode'=>'');
         $this->session->unset_userdata('logged_in', $session);
-        $this->session->set_userdata('message_display', 'Successfully Logout');
+        $this->session->set_userdata('message_display_l', 'Successfully Logout');
         redirect('/account', 'refresh');
     }
 

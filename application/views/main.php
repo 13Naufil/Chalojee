@@ -1,5 +1,6 @@
 <?php include(APPPATH.'views/common/head.php'); ?>
 <?php include(APPPATH.'views/common/header.php'); ?>
+<?php include(APPPATH.'views/common/navigation.php'); ?>
 
 <style>
     #country-list{float:left;list-style:none;margin-top:-3px;padding:0;width:100%;position: absolute;}

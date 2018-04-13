@@ -1,32 +1,7 @@
 <?php include(APPPATH.'views/common/head.php'); ?>
+<?php include(APPPATH.'views/common/header.php'); ?>
 
 <div class="main">
-    <!-- Top Header Section Start -->
-    <div class="top-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="lang">
-                        <select>
-                            <option>EN</option>
-                            <option>Gr</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="up-text">
-                        <p>Start New Quotation / My Quotation</p>
-                        <span>1</span>
-                        <p>Saba Siddiq (Change Profile)</p>
-                        <button>Logout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Top Header Section End -->
-
-
     <!-- Header Section Start -->
     <div class="clearfix"></div>
     <header class="main-menu">
@@ -119,18 +94,11 @@
         <!-- Inner Hotel Details Section Start -->
         <div class="hotel-details-inner">
             <h1><?php echo $data['HotelDetails']['@attributes']['HotelName']; ?></h1>
-            <p>Check In 23-Mar-2018 Check Out 24-Apr-2018</p>
+            <p>Check In <?php echo $CheckInDate; ?> Check Out <?php echo $CheckOutDate; ?></p>
             <div class="inner-content-star">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <?php echo get_rating($Rating); ?>
                 <span class="cont-face"></span>
-                <img src="<?php echo base_url(); ?>img/full-circle.png" />
-                <img src="<?php echo base_url(); ?>img/full-circle.png" />
-                <img src="<?php echo base_url(); ?>img/full-circle.png" />
-                <img src="<?php echo base_url(); ?>img/half-circle.png" />
-                <img src="<?php echo base_url(); ?>img/full-empty-circle.png" />
+                <a href="<?php echo $TripAdvisorReviewURL; ?>"><?php echo get_tripadvisor_rating($TripAdvisorRating);?></a>
             </div>
             <div class="inner-loc"><?php echo $data['HotelDetails']['Address']; ?></div>
         </div>
@@ -236,7 +204,7 @@
                     <h1 class="table-heading01">Deluxe Room</h1>
                 </div>
                 <div class="col-md-6 flt-right">
-                    <div class="inner-price-text"><p>Total Price: <strong>$ 1630.90</strong></p><a href="javascript:;">Continue</a></div>
+                    <div class="inner-price-text"><p>Total Price: <strong>$ 1630.90</strong></p><a href="<?php echo base_url();?>booking">Continue</a></div>
                 </div>
                 <!-- Hotel Table Upper Section End -->
 
@@ -296,167 +264,6 @@
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <?php endforeach;?>
-                           <!-- <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px">Free cancellation till: 20-Mar-2018</td>
-                                <td width="150px">$ 1868.32 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="100px">
-                                    <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label></td>
-                                <td width="300px">
-                                    <p >Deluxe
-                                        <strong>Show Room Description</strong>
-                                    </p>
-                                </td>
-                                <td width="240px">Room Only</td>
-                                <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ 1976.38 <img src="<?php /*echo base_url(); */?>img/price-icon.png" /></td>
-                                <td width="40px"><div class="plus">+</div></td>
-                            </tr>-->
-
 
                         </table>
                     </div>

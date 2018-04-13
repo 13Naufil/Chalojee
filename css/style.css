@@ -42,9 +42,9 @@ select {
 }
 
 /*====== Custom Styles ========*/
-.home{background: url("../images/bg.jpg") no-repeat;}
-.home-bg{background: url("../img/bg.jpg") no-repeat;}
-.inner-bg{background: url("../img/inner-bg.jpg") no-repeat;}
+.home{background: url("../images/bg.jpg") no-repeat;    background-size: cover;}
+.home-bg{background: url("../img/bg.jpg") no-repeat;     background-size: cover;}
+.inner-bg{background: url("../img/inner-bg.jpg") no-repeat;     background-size: cover;}
 .main-menu .navbar-default {
     background-color: transparent;
     border: none;
@@ -223,7 +223,7 @@ select {
 
 .up-text p {
     display: inline-block;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
     margin: 0;
     padding: 0 15px;
@@ -1825,7 +1825,7 @@ section{
     height: 100%;
 }
 #main{
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.65);
 }
 
 .space{
@@ -1833,8 +1833,9 @@ section{
 }
 
 header .top_header {
-    background: url(../images/top-header2.jpg) no-repeat center;
-    height: 50px;
+    background: #0682df;
+    padding: 5px 0;
+    border-bottom: 1px solid #0157b1;
 }
 
 header .top_header ul {
@@ -1935,4 +1936,8 @@ header .top_header ul li i, header .top_header ul li span {
 
 .black-color{
     color: black;
+}
+
+.alert{
+    margin: 30px 0 0 30px;
 }
