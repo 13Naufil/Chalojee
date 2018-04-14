@@ -13,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="<?php echo base_url(); ?>js/scripts.js"></script>
+<script src="<?php echo base_url(); ?>js/pagination.js"></script>
 
 </body>
 </html>

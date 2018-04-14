@@ -26,6 +26,7 @@
                     </div>
                     <div class="row">
                         <input class="form-control" type="text" id="search" name="search" required>
+                        <input type="hidden" id="search_id" name="search_id">
                         <div id="suggesstion-box"></div>
                     </div>
 
@@ -54,7 +55,7 @@
                             <div id="datetimepicker21">
                                 <input type='text' class="form-control datepicker" name="check_out" required/>
                                 <!--<span class="input-group-addon">-->
-                        <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                            <!--<span class="glyphicon glyphicon-calendar"></span>-->
                     </span>
                             </div>
                         </div>
@@ -115,7 +116,6 @@
 
 <script>
     $( function() {
-
     $('#search').autocomplete({
         source : function(request, response){
         $.ajax({
@@ -127,6 +127,7 @@
             },
             success: function(data)
             {
+                console.log(data);
                 $("#suggesstion-box").show();
                 $("#suggesstion-box").html(data);
                 $("#suggesstion-box").css("background","#FFF");
@@ -157,9 +158,9 @@
         $('#child-age-context').html(data);
     });
 
-    function selectCountry(value) {
-        //console.log(value);
-        $("#search").val(value);
+    function selectCountry(value,value1) {
+        $("#search_id").val(value);
+        $("#search").val(value1);
         $("#suggesstion-box").hide();
     }
 

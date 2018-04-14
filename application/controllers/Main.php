@@ -5,10 +5,8 @@ class Main extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-        //$this->load->library("common");
 
         $this->load->helper('temp_helper');
-
         $this->load->library("search");
         $this->load->model("destination");
         $this->search->username = WSDL_USERNAME;
@@ -31,7 +29,7 @@ class Main extends CI_Controller {
             $data = '<li>No result found</li>';
         }else{
             foreach($record as $country) {
-                $data .= "<li onClick='selectCountry($country->CityCode);'>";
+                $data .= "<li onClick=\"selectCountry($country->CityCode,'$country->CityName');\">";
                 $data .= $country->CityName;
                 $data .= "</li>";
             }
@@ -42,7 +40,7 @@ class Main extends CI_Controller {
 
     public function Search()
     {
-        $CityId = isset($_POST['search']) ? $_POST['search'] : '';
+        $CityId = isset($_POST['search_id']) ? $_POST['search_id'] : '';
         $check_in = isset($_POST['check_in']) ? $_POST['check_in'] : '';
         $check_out = isset($_POST['check_out']) ? $_POST['check_out'] : '';
         $NoOfRooms = isset($_POST['rooms']) ? $_POST['rooms'] : 1;
