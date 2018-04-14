@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2018 at 12:23 PM
+-- Generation Time: Apr 14, 2018 at 12:47 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -19,6 +19,42 @@ SET time_zone = "+00:00";
 --
 -- Database: `chaloje`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_customers`
+--
+
+DROP TABLE IF EXISTS `c_customers`;
+CREATE TABLE IF NOT EXISTS `c_customers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(10) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `Age` varchar(50) NOT NULL,
+  `AddressLine1` text NOT NULL,
+  `AddressLine2` text NOT NULL,
+  `CountryCode` text,
+  `AreaCode` text,
+  `PhoneNo` text NOT NULL,
+  `Email` text NOT NULL,
+  `password` text NOT NULL,
+  `City` text NOT NULL,
+  `State` text NOT NULL,
+  `Country` text NOT NULL,
+  `ZipCode` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `c_customers`
+--
+
+INSERT INTO `c_customers` (`id`, `Title`, `FirstName`, `LastName`, `Age`, `AddressLine1`, `AddressLine2`, `CountryCode`, `AreaCode`, `PhoneNo`, `Email`, `password`, `City`, `State`, `Country`, `ZipCode`) VALUES
+(1, 'Mr', 'naufil', 'khan', '12', 'KHI', 'KHI', NULL, NULL, '3323103324', 'naufil.dys@gmail.com', '123', 'Karachi', 'Sindh', 'Pakistan', '2222'),
+(2, 'Mr', 'Naufil', 'khan', '21', 'Gulshan -e- Iqbal', 'Gulshan -e- Iqbal', NULL, NULL, '0321422545', 'naufil_khan13@hotmail.com', '123', 'Karachi', 'Sindh', 'Pakistan', '74800'),
+(3, 'Mr', 'naufil', 'khan', '21', 'khi', 'khui', NULL, NULL, '3323103324', 'naufil1.dys@gmail.com', '202cb962ac59075b964b07152d234b70', 'Karachi', 'Sindh', 'Pakistan', '74800');
 
 -- --------------------------------------------------------
 
@@ -49968,6 +50004,41 @@ INSERT INTO `c_destination` (`id`, `CityCode`, `City`, `Country`, `CityName`) VA
 (49857, 150085, 'Nyanga', 'Zimbabwe', 'Nyanga , Zimbabwe'),
 (49858, 146933, 'Nyanga-Nationalpark', 'Zimbabwe', 'Nyanga-Nationalpark , Zimbabwe'),
 (49859, 141497, 'Victoria Falls', 'Zimbabwe', 'Victoria Falls , Zimbabwe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_notifications`
+--
+
+DROP TABLE IF EXISTS `c_notifications`;
+CREATE TABLE IF NOT EXISTS `c_notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `CityCode` text NOT NULL,
+  `CityName` text NOT NULL,
+  `CountryCode` text NOT NULL,
+  `CountryName` text NOT NULL,
+  `Caption` text NOT NULL,
+  `Text` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `c_notifications`
+--
+
+INSERT INTO `c_notifications` (`id`, `CityCode`, `CityName`, `CountryCode`, `CountryName`, `Caption`, `Text`) VALUES
+(1, '100765', 'Abu Dhabi', 'AE', 'United Arab Emirates', 'City Tax Notification', 'W.e.f 01.06.2016, Government of Abu Dhabi is applying a fee of AED 15 per room per night, which the guests availing the stay will have to pay to the hotel directly as applied before check-out.'),
+(2, '114168', 'Cannes', 'FR', 'France', 'City Tax Notification\r\n', 'Effective 01st January 2016, the CANNES city tax fee is applicable and will be paid by the clients per person per night basis, directly at the reception at the time of check out.'),
+(3, '113344', 'Cannes la Bocca', 'FR', 'France', 'City Tax Notification\r\n', 'Effective 01st January 2016, the CANNES city tax fee is applicable and will be paid by the clients per person per night basis, directly at the reception at the time of check out.'),
+(4, '113741', 'Cannes-Écluse', 'FR', 'France', 'City Tax Notification\r\n', 'Effective 01st January 2016, the CANNES city tax fee is applicable and will be paid by the clients per person per night basis, directly at the reception at the time of check out.'),
+(5, '115936', 'Dubai', 'AE', 'United Arab Emirates', 'Tourism Dirham Notification', 'W.e.f 31.03.2014, Government of Dubai is applying “Tourism Dirham” a fee ranging from AED 7-20 per room per night, which the guests availing the stay will have to pay to the hotel directly as applied before check-out.'),
+(6, '100105', 'Langkawi', 'MY', 'Malaysia', 'Tourism Promotional Fee', 'W.e.f 01.07.2016, Langkawi Municipal Council has imposed a “Tourism Promotional Fee” ranging from MYR 1-9 per room per night, which the guests availing the stay will have to pay to the hotel directly as applied before check-out'),
+(7, '125099', 'Las Vegas,   Nevada', 'US', 'United States of America', 'Tourism Las Vegas Notification', 'Please note that in Las Vegas, certain hotels apply an additional resort fee which is payable directly by the guests at the time of check-in.'),
+(8, '146305', 'Lisbon', 'PT', 'Portugal', 'City Tax Notification', 'W.e.f. 1st Jan 2016, Government of Portugal is applying a "City tax" of €1.00 (One Euro) PER PERSON PER NIGHT, and this tax will be paid by the customer directly at the hotel upon departure and will apply to individual and group bookings.'),
+(9, '127891', 'Makkah', 'SA', 'Saudi Arabia', 'Tourism Makkah Notification', 'Check-in Time: Please note that check-in time for Makkah hotels is 17:00 hrs (local Makkah time)'),
+(10, '101365', 'Maldives', 'MV', 'Maldives', 'Maldives Transfer Notification', 'Flight detail is important to provide to ensure smooth arrival. Please note any flight landing 1500 hrs or Later and any flight departing at 0900 hrs or Earlier can not connect with the seaplane transfer.'),
+(11, '131408', 'Paris', 'FR', 'France', 'Tourism Paris Notification', 'W.e.f. 1st July 2015, Government of France is applying a "Tourist tax" of a certain amount in Euros per person per night, and this tax will be paid by the customer directly at the hotel upon departure and will apply to individual and group bookings.');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
