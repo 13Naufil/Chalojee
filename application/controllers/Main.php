@@ -114,7 +114,13 @@ class Main extends CI_Controller {
             $response = $this->search->HotelDetails($SessionId,$ResultIndex);
             if($response[0]['HotelDetailsResponse']['Status']['StatusCode'] == 1)
             {
+
+               // print_r($response);
+
+
                 $room_details = $this->search->AvailableHotelRooms($SessionId,$ResultIndex,$HotelCode);
+               /* print_r($room_details);
+                exit;*/
                 $data = array('data'=>$response[0]['HotelDetailsResponse'],'room_details'=>$room_details[0]['HotelRoomAvailabilityResponse'],'Rating'=>$Rating,'TripAdvisorRating'=>$TripAdvisorRating,'TripAdvisorReviewURL'=>$TripAdvisorReviewURL,'CheckInDate'=>$CheckInDate,'CheckOutDate'=>$CheckOutDate,'SessionId'=>$SessionId,'ResultIndex'=>$ResultIndex,'message'=>'Fetch Data Successfully','home'=>'inner-bg');
             }
         }

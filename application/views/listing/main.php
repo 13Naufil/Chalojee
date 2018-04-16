@@ -514,20 +514,29 @@
                                     </div>
                                 </div>
                                 <div class="booking-div">
-                                    <a class="btn btn-primary" href="<?php echo base_url();?>booking">Book Now</a>
-                                    <?php $attributes = array('id' => 'searchId'); ?>
-                                    <?php echo form_open_multipart('detail', $attributes);  ?>
-                                    <?php
-                                    echo form_hidden('TripAdvisorRating',isset($item['HotelInfo']['TripAdvisorRating']) ? $item['HotelInfo']['TripAdvisorRating'] : '');
-                                    echo form_hidden('TripAdvisorReviewURL',isset($item['HotelInfo']['TripAdvisorReviewURL']) ? $item['HotelInfo']['TripAdvisorReviewURL'] : '');
-                                    echo form_hidden('Rating',$item['HotelInfo']['Rating']);
-                                    echo form_hidden('CheckInDate',$data['HotelSearchResponse']['CheckInDate']);
-                                    echo form_hidden('CheckOutDate',$data['HotelSearchResponse']['CheckOutDate']);
-                                    echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
-                                    echo form_hidden('ResultIndex',$item['ResultIndex']);
-                                    echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
-                                    ?>
-                                    <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
+                                    <div class="col col-lg-12">
+                                        <div class="row">
+                                            <div class="col col-lg-9"></div>
+                                            <div class="col col-lg-2">
+                                                <a class="btn btn-primary" href="<?php echo base_url();?>booking">Book Now</a>
+                                                <?php $attributes = array('id' => 'searchId'); ?>
+                                                <?php echo form_open_multipart('detail', $attributes);  ?>
+                                                <?php
+                                                echo form_hidden('TripAdvisorRating',isset($item['HotelInfo']['TripAdvisorRating']) ? $item['HotelInfo']['TripAdvisorRating'] : '');
+                                                echo form_hidden('TripAdvisorReviewURL',isset($item['HotelInfo']['TripAdvisorReviewURL']) ? $item['HotelInfo']['TripAdvisorReviewURL'] : '');
+                                                echo form_hidden('Rating',$item['HotelInfo']['Rating']);
+                                                echo form_hidden('CheckInDate',$data['HotelSearchResponse']['CheckInDate']);
+                                                echo form_hidden('CheckOutDate',$data['HotelSearchResponse']['CheckOutDate']);
+                                                echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
+                                                echo form_hidden('ResultIndex',$item['ResultIndex']);
+                                                echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
+                                                ?>
+                                            </div>
+                                            <div class="col col-lg-1">
+                                                <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <?php echo form_close();?>
                                 </div>
                                 <?php

@@ -1659,7 +1659,7 @@ h1.table-heading01 {
 /* Hide the browser's default radio button */
 .table-chck input {
     position: absolute;
-    opacity: 0;
+    opacity: 1;
 }
 
 /* Create a custom radio button */

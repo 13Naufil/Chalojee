@@ -104,7 +104,6 @@
                 $cordinates = explode("|",$data['HotelDetails']['Map']);
                 $lat = $cordinates[0];
                 $long = $cordinates[1];
-                print_r($lat); print_r($long);
             endif;
 
 
@@ -155,7 +154,7 @@
                     <h1 class="table-heading01">Deluxe Room</h1>
                 </div>
                 <div class="col-md-6 flt-right">
-                    <div class="inner-price-text"><p>Total Price: <strong>$ 1630.90</strong></p><a href="<?php echo base_url();?>booking">Continue</a></div>
+                    <div class="inner-price-text"><p>Total Price: <strong id="total_price"></strong></p><a href="<?php echo base_url();?>booking">Continue</a></div>
                 </div>
                 <!-- Hotel Table Upper Section End -->
 
@@ -196,13 +195,14 @@
                              foreach($room_details['HotelRooms']['HotelRoom'] as $room): ?>
                                  <?php  echo form_hidden('RoomIndex',$room['RoomIndex']); ?>
                                  <?php  echo form_hidden('RoomTypeCode',$room['RoomTypeCode']); ?>
-                                 <?php  echo form_hidden('RatePlanCode',$room['RatePlanCode']); ?>
 
-                            <tr>
+
+                            <tr id="<?php echo $room['RoomIndex']; ?>">
                                 <td align="center" width="100px">
                                     <label class="table-chck">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
+                                        <input type="radio" name="checkmark" class="checkmark" <?php echo $room['RoomIndex'] == 1 ? 'checked' : ''; ?> value="<?php echo $room['RoomRate']['@attributes']['TotalFare']; ?>"/>
+                                        <?php  echo form_hidden(array('name'=>'TotalFare','id'=>'TotalFare','class'=>'TotalFare','value'=>$room['RoomRate']['@attributes']['TotalFare'])); ?>
+                                       <!-- <span class="checkmark"></span>-->
                                     </label></td>
                                 <td width="300px">
                                     <p><?php echo $room['RoomTypeName']; ?>
@@ -211,7 +211,7 @@
                                 </td>
                                 <td width="240px"><?php echo $room['Inclusion'] != null ? $room['Inclusion'] : 'Room Only'; ?></td>
                                 <td width="400px"><a href="javascript:;">Cancellation Policies </a></td>
-                                <td width="150px">$ <?php echo $room['RoomRate']['@attributes']['TotalFare']; ?> <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
+                                <td width="150px" aria-controls="total_fair">$ <?php echo $room['RoomRate']['@attributes']['TotalFare']; ?> <img src="<?php echo base_url(); ?>img/price-icon.png" /></td>
                                 <td width="40px"><div class="plus">+</div></td>
                             </tr>
                             <?php endforeach;?>
@@ -262,6 +262,18 @@
                 map: map
             });
         }
+
+        $(function(){
+
+            var load = '$ '+$('input:radio[name="checkmark"]').val();
+            $('#total_price').html(load);
+
+            $('input:radio[name="checkmark"]').change(
+                function(){
+                    var val = '$ '+$(this).val();
+                    $('#total_price').html(val);
+            });
+        });
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANDYAOXDdZGOJklGCXqVgPbDC_UcF0hL8&callback=myMap">
