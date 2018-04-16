@@ -43,8 +43,8 @@ select {
 
 /*====== Custom Styles ========*/
 .home{background: url("../images/bg.jpg") no-repeat;    background-size: cover;}
-.home-bg{background: url("../img/bg.jpg") no-repeat;     background-size: cover;}
-.inner-bg{background: url("../img/inner-bg.jpg") no-repeat;     background-size: cover;}
+.home-bg{background: url("../img/bg.jpg") no-repeat;}
+.inner-bg{background: url("../img/inner-bg.jpg") no-repeat;}
 .main-menu .navbar-default {
     background-color: transparent;
     border: none;
@@ -1821,7 +1821,7 @@ h1 {
 }
 
 section{
-    padding-top: 70px;
+    padding-top: 40px;
     height: 100%;
 }
 #main{

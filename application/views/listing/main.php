@@ -3,56 +3,7 @@
 <div class="main">
     <!-- Header Section Start -->
     <div class="clearfix"></div>
-    <header class="main-menu">
-
-        <!-- Logo Section Start -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div id="wrap">
-                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>img/logo.png"></a>
-                    </div>
-                </div>
-                <div class="col-md-9 pad-right">
-                    <div class="recharge">
-                        <!--<p>Avl Limit : $ 0.00 </p>
-                        <button class="btn">Recharge</button>-->
-                    </div>
-                </div>
-                <!-- Logo Section End -->
-
-                <!-- Menu Section Start -->
-                <div class="col-md-10 pad-both">
-                    <nav class="navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                                    aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">Hotels</a></li>
-                                <li><a href="#">Queues</a></li>
-                                <li><a href="#">Accounts</a></li>
-                                <li><a href="#">Reports</a></li>
-                                <li><a href="#">Admin</a></li>
-                                <li><a href="#">Packages</a></li>
-                                <li class="login-btn"><a href="#">Special Offer</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-md-2 pad-right">
-                    <p class="home-contact">Contact Us</p>
-                </div>
-                <!-- Menu Section End -->
-            </div>
-        </div>
-    </header>
+    <?php include(APPPATH.'views/common/navigation.php'); ?>
     <!-- Header Section End -->
 
 
@@ -73,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="count">
+                        <!--<div class="count">
                             <p>0</p>
                             <span>?</span>
                             <a href="javascript:;"></a>
@@ -81,7 +32,7 @@
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -222,23 +173,23 @@
 
                         </div>
                     </div>
-                  <!--  <h2>Property Type</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
-                    <div class="star-rating">
-                        <div class="star-rating-inner">
-                            <label class="chck-cont">
-                                <input type="checkbox"  id="three" value="three">
-                                <span class="checkmark"></span>
-                            </label>
-                            <span>Hotel (245)</span>
-                        </div>
-                        <div class="star-rating-inner">
-                            <label class="chck-cont">
-                                <input type="checkbox"  id="three" value="three">
-                                <span class="checkmark"></span>
-                            </label>
-                            <span>Apartment (33)</span>
-                        </div>
-                    </div>-->
+                    <!--  <h2>Property Type</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
+                      <div class="star-rating">
+                          <div class="star-rating-inner">
+                              <label class="chck-cont">
+                                  <input type="checkbox"  id="three" value="three">
+                                  <span class="checkmark"></span>
+                              </label>
+                              <span>Hotel (245)</span>
+                          </div>
+                          <div class="star-rating-inner">
+                              <label class="chck-cont">
+                                  <input type="checkbox"  id="three" value="three">
+                                  <span class="checkmark"></span>
+                              </label>
+                              <span>Apartment (33)</span>
+                          </div>
+                      </div>-->
                     <!--<h2>Location</h2><a href="javascript:;" class="iner-filter-link">Clear</a>
                     <div class="star-rating">
                         <div class="star-rating-inner">
@@ -440,8 +391,7 @@
             <!-- Left Side Section End-->
             <div class="col-md-8 pad-right">
                 <div class="home-text">
-                    <p>W.e.f 31.03.2014, Government of Dubai is applying "Tourism Dirham" a fee ranging from AED 7-20 per room per night, which the guests availing the stay will
-                        have to pay to the hotel directly as applied before check-out. </p>
+                    <p><?php echo $notification[0]->Text; ?></p>
                 </div>
                 <div class="hotels-filter">
                     <div class="col-md-8">
@@ -530,64 +480,64 @@
 
                     <div class="content-details">
                         <?php
-                            if($StatusCode == 1){
+                        if($StatusCode == 1){
 
-                                foreach ($data['HotelSearchResponse']['HotelResultList']['HotelResult'] as $item):
-                        ?>
-                        <div class="col-md-3 pad-both">
-                            <div class="loc-pic"><img src="<?php echo $item['HotelInfo']['HotelPicture'];?>" class="img-responsive" /></div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="inner-content-details">
-                                <h1><?php echo $item['HotelInfo']['HotelName'];?></h1><a href="javascript:;" class="content-map">Show Map</a>
-                                <div class="content-star"><?php echo get_rating($item['HotelInfo']['Rating']); ?>
-                                    <span class="cont-face"></span>
-                                    <a href="<?php echo $item['HotelInfo']['TripAdvisorReviewURL']; ?>"><?php echo get_tripadvisor_rating($item['HotelInfo']['TripAdvisorRating']);?></a></div>
-                                <h3>Property Location</h3>
-                                <p><?php echo (strlen($item['HotelInfo']['HotelDescription']) > 30) ? substr($item['HotelInfo']['HotelDescription'],0,250).'...' : $item['HotelInfo']['HotelDescription'];?><a href="javascript:;">more details</a>
-                                </p>
-                                <div class="clearfix"></div>
-                                <!--<a href="javascript:;" class="content-payment">Pay at hotel options also available</a>-->
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <p class="price">$ <?php echo $item['MinHotelPrice']['@attributes']['TotalPrice'];?></p>
-                            <div class="price-icon-pic"><img src="<?php echo base_url(); ?>img/price-icon.png" /></div>
-                            <p class="min-price">Minimum Total Price</p>
-                            <p class="tax">(Incl. Taxes)</p>
-                            <div class="">
-                                <!--<label class="email-cont">Email
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>-->
+                            foreach ($data['HotelSearchResponse']['HotelResultList']['HotelResult'] as $item):
+                                ?>
+                                <div class="col-md-3 pad-both">
+                                    <div class="loc-pic"><img src="<?php echo $item['HotelInfo']['HotelPicture'];?>" class="img-responsive" /></div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="inner-content-details">
+                                        <h1><?php echo $item['HotelInfo']['HotelName'];?></h1><a href="javascript:;" class="content-map">Show Map</a>
+                                        <div class="content-star"><?php echo get_rating($item['HotelInfo']['Rating']); ?>
+                                            <span class="cont-face"></span>
+                                            <a href="<?php echo isset($item['HotelInfo']['TripAdvisorReviewURL']) ? $item['HotelInfo']['TripAdvisorReviewURL'] : '#'; ?>"><?php echo isset($item['HotelInfo']['TripAdvisorRating']) ? get_tripadvisor_rating($item['HotelInfo']['TripAdvisorRating']) : '';?></a></div>
+                                        <h3>Property Location</h3>
+                                        <p><?php echo (strlen($item['HotelInfo']['HotelDescription']) > 30) ? substr($item['HotelInfo']['HotelDescription'],0,250).'...' : $item['HotelInfo']['HotelDescription'];?><a href="javascript:;">more details</a>
+                                        </p>
+                                        <div class="clearfix"></div>
+                                        <!--<a href="javascript:;" class="content-payment">Pay at hotel options also available</a>-->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="price">$ <?php echo $item['MinHotelPrice']['@attributes']['TotalPrice'];?></p>
+                                    <div class="price-icon-pic"><img src="<?php echo base_url(); ?>img/price-icon.png" /></div>
+                                    <p class="min-price">Minimum Total Price</p>
+                                    <p class="tax">(Incl. Taxes)</p>
+                                    <div class="">
+                                        <!--<label class="email-cont">Email
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>-->
 
-                            </div>
-                        </div>
-                        <div class="booking-div">
-                            <a class="btn btn-primary" href="<?php echo base_url();?>booking">Book Now</a>
-                            <?php $attributes = array('id' => 'searchId'); ?>
-                            <?php echo form_open_multipart('detail', $attributes);  ?>
-                            <?php
-                            echo form_hidden('TripAdvisorRating',$item['HotelInfo']['TripAdvisorRating']);
-                            echo form_hidden('TripAdvisorReviewURL',$item['HotelInfo']['TripAdvisorReviewURL']);
-                            echo form_hidden('Rating',$item['HotelInfo']['Rating']);
-                            echo form_hidden('CheckInDate',$data['HotelSearchResponse']['CheckInDate']);
-                            echo form_hidden('CheckOutDate',$data['HotelSearchResponse']['CheckOutDate']);
-                            echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
-                            echo form_hidden('ResultIndex',$item['ResultIndex']);
-                            echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
-                            ?>
-                            <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
-                            <?php echo form_close();?>
-                        </div>
-                        <?php
+                                    </div>
+                                </div>
+                                <div class="booking-div">
+                                    <a class="btn btn-primary" href="<?php echo base_url();?>booking">Book Now</a>
+                                    <?php $attributes = array('id' => 'searchId'); ?>
+                                    <?php echo form_open_multipart('detail', $attributes);  ?>
+                                    <?php
+                                    echo form_hidden('TripAdvisorRating',isset($item['HotelInfo']['TripAdvisorRating']) ? $item['HotelInfo']['TripAdvisorRating'] : '');
+                                    echo form_hidden('TripAdvisorReviewURL',isset($item['HotelInfo']['TripAdvisorReviewURL']) ? $item['HotelInfo']['TripAdvisorReviewURL'] : '');
+                                    echo form_hidden('Rating',$item['HotelInfo']['Rating']);
+                                    echo form_hidden('CheckInDate',$data['HotelSearchResponse']['CheckInDate']);
+                                    echo form_hidden('CheckOutDate',$data['HotelSearchResponse']['CheckOutDate']);
+                                    echo form_hidden('SessionId',$data['HotelSearchResponse']['SessionId']);
+                                    echo form_hidden('ResultIndex',$item['ResultIndex']);
+                                    echo form_hidden('HotelCode',$item['HotelInfo']['HotelCode']);
+                                    ?>
+                                    <button type="submit" class="btn-search-img"><img src="<?php echo base_url(); ?>img/book-button.png" /></button>
+                                    <?php echo form_close();?>
+                                </div>
+                                <?php
                             endforeach;
-                            }else{ echo "<div class='errormsg'>No Hotel Found</div>"; } ?>
+                        }else{ echo "<div class='errormsg'>No Hotel Found</div>"; } ?>
                     </div>
                     <!-- Left Side Section Start-->
                 </div>
             </div>
 
-<?php include(APPPATH.'views/common/top_footer.php'); ?>
-<?php include(APPPATH.'views/common/footer.php'); ?>
+            <?php include(APPPATH.'views/common/top_footer.php'); ?>
+            <?php include(APPPATH.'views/common/footer.php'); ?>
 

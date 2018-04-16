@@ -4,56 +4,7 @@
 <div class="main">
     <!-- Header Section Start -->
     <div class="clearfix"></div>
-    <header class="main-menu">
-
-        <!-- Logo Section Start -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div id="wrap">
-                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>img/logo.png"></a>
-                    </div>
-                </div>
-                <div class="col-md-9 pad-right">
-                   <!-- <div class="recharge">
-                        <p>Avl Limit : $ 0.00 </p>
-                        <button class="btn">Recharge</button>
-                    </div>-->
-                </div>
-                <!-- Logo Section End -->
-
-                <!-- Menu Section Start -->
-                <div class="col-md-10 pad-both">
-                    <nav class="navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                                    aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Hotels</a></li>
-                                <li><a href="#">Queues</a></li>
-                                <li><a href="#">Accounts</a></li>
-                                <li><a href="#">Reports</a></li>
-                                <li><a href="#">Admin</a></li>
-                                <li><a href="#">Packages</a></li>
-                                <li class="inner-btn"><a href="#">Special Offer</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-md-2 pad-right">
-                    <p class="home-contact">Contact Us</p>
-                </div>
-                <!-- Menu Section End -->
-            </div>
-        </div>
-    </header>
+    <?php include(APPPATH.'views/common/navigation.php'); ?>
     <!-- Header Section End -->
 
 
@@ -74,13 +25,13 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="count">
+                        <!--<div class="count">
 
                             <label class="home-radio" style="float:right">Off
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

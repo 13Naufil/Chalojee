@@ -9,6 +9,7 @@ class Main extends CI_Controller {
         $this->load->helper('temp_helper');
         $this->load->library("search");
         $this->load->model("destination");
+        $this->load->model("notifications");
         $this->search->username = WSDL_USERNAME;
         $this->search->password = WSDL_PASSWORD;
     }
@@ -64,6 +65,10 @@ class Main extends CI_Controller {
         $CountryName = $data->Country;
         $CityName = $data->City;
 
+        if($CityId != ''):
+
+        $notification = $this->notifications->fetchbyid($CityId);
+
         $data = array();
 
         if($child == 0)
@@ -71,12 +76,12 @@ class Main extends CI_Controller {
             $response = $this->search->HotelSearch($CheckInDate,$CheckOutDate,$CountryName,$CityName,$CityId,$IsNearBySearchAllowed,$NoOfRooms,$GuestNationality,$RoomGuests,$ResultCount,$Filters);
             if($response[0]['HotelSearchResponse']['Status']['StatusCode'] == 1)
             {
-                $data = array('StatusCode'=>$response[0]['HotelSearchResponse']['Status']['StatusCode'],'data'=>$response[0],'home'=>'home-bg');
+                $data = array('StatusCode'=>$response[0]['HotelSearchResponse']['Status']['StatusCode'],'data'=>$response[0],'home'=>'home-bg','notification'=>$notification);
 
             }
             else
             {
-                $data = array('StatusCode'=>$response[0]['HotelSearchResponse']['Status']['StatusCode'],'data'=>'','home'=>'home-bg');
+                $data = array('StatusCode'=>$response[0]['HotelSearchResponse']['Status']['StatusCode'],'data'=>'','home'=>'home-bg','notification'=>$notification);
             }
         }
         else
@@ -85,6 +90,9 @@ class Main extends CI_Controller {
         }
 
         $this->load->view("listing/main",$data);
+
+
+        endif;
     }
 
     public function Detail()
@@ -97,6 +105,8 @@ class Main extends CI_Controller {
         $TripAdvisorRating = isset($_POST['TripAdvisorRating']) ? $_POST['TripAdvisorRating'] : '';
         $TripAdvisorReviewURL = isset($_POST['TripAdvisorReviewURL']) ? $_POST['TripAdvisorReviewURL'] : '';
         $Rating = isset($_POST['Rating']) ? $_POST['Rating'] : '';
+
+
 
 
         if($SessionId != '' && $ResultIndex != 0 && $HotelCode != 0)
